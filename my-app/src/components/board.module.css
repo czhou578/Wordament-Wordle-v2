@@ -1,0 +1,27 @@
+.board {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  column-gap: 20px;
+  row-gap: 20px;
+  position: absolute;
+  top: 250px;
+  right: 700px;
+  height: 600px;
+  width: 530px;
+  background-color: antiquewhite;
+}
+
+.wordsquare {
+  background-color: lightgreen;
+  border: 1px solid blue;
+  font-size: 30px;
+  padding-top: 45px;
+  padding-right: 5px;
+  text-align: center;
+  z-index: 1;
+}
+
+.container {
+  margin-left: 30%;
+  margin-top: 30%;
+}
