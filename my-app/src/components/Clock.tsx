@@ -1,6 +1,12 @@
 import { MutableRefObject, useEffect, useRef } from "react";
+import './clock.css'
 
-export default function Clock() {
+interface Props {
+  setTimesUp: (param: boolean) => void
+  timesUp: boolean
+}
+
+export default function Clock(props:Props) {
   const timerElement = useRef() as MutableRefObject<HTMLInputElement>
   const starting = 2;
   let time = starting * 60; //seconds
@@ -29,14 +35,14 @@ export default function Clock() {
     if (minutes < 0) {
       timerElement.current.innerHTML = "Time's Up!";
     }
-    
+
     time--;
   }
 
   return (
     <div>
       <div className="time-clock">
-        <h1 className="header">Game Time Remaining</h1>
+        <h1 className="clock-header">Game Time Remaining</h1>
         <h2 id="timer" ref={timerElement}>2:00</h2>
       </div>
     </div>
