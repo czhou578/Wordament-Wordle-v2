@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { StartingModal } from "./components/StartingModal";
 import Board from "./components/Board";
 import Clock from "./components/Clock";

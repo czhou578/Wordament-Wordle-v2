@@ -1,39 +1,43 @@
-import { useRef } from "react";
+import { MutableRefObject, useEffect, useRef } from "react";
 
 export default function Clock() {
-  const timerElement = useRef(null)
-  let timerElementString;
+  const timerElement = useRef() as MutableRefObject<HTMLInputElement>
   const starting = 2;
   let time = starting * 60; //seconds
 
+  useEffect(() => {
+    setInterval(() => {
+      update()
+    }, 1000)
+  })
+  
   function update() { //update the clock
     const minutes = Math.floor(time / 60);
     let seconds: string|number = time % 60;
+
     if (seconds == 0) {
-      timerElementString = `${minutes}:${0}${0}`;
+      timerElement.current.innerHTML = `${minutes}:${0}${0}`;
+      
     } else if (seconds < 10 && seconds > 0) {
-      timerElementString = `${minutes}:${0}${seconds}`;
-    } 
-    else {
-      timerElementString = `${minutes}:${seconds}`;
+      timerElement.current.innerHTML = `${minutes}:${0}${seconds}`;
+
+    } else {
+      timerElement.current.innerHTML = `${minutes}:${seconds}`;
       seconds = seconds < 10 ? "10" + seconds : seconds;
     }
 
     if (minutes < 0) {
-      timerElementString = "Time's Up!";
-      // timerElement.style.position = "relative"
+      timerElement.current.innerHTML = "Time's Up!";
     }
+    
     time--;
   }
-
-  update()
-
 
   return (
     <div>
       <div className="time-clock">
         <h1 className="header">Game Time Remaining</h1>
-        <h2 id="timer" dangerouslySetInnerHTML={{__html: timerElement}} ref={timerElement}>2:00</h2>
+        <h2 id="timer" ref={timerElement}>2:00</h2>
       </div>
     </div>
   )
