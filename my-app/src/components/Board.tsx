@@ -1,9 +1,12 @@
 import { MutableRefObject, useEffect, useRef } from "react";
 import styles from "./board.module.css";
-import './words.json'
+import words from './words.json'
 
+interface Props {
+  setScore: (active: number) => void
+}
 
-export default function Board() {
+export default function Board(props: Props) {
   const boardRef = useRef() as MutableRefObject<HTMLInputElement>
   const wordSquareRef = useRef() as MutableRefObject<HTMLInputElement>
   const containerRef = useRef() as MutableRefObject<HTMLInputElement> 
@@ -12,6 +15,8 @@ export default function Board() {
   var mousedown: boolean;
   var selectedLetters = new Array(16);
   var correctWords = new Set();
+  var vowelString = "aeiou".toUpperCase();
+  var consonantString = "bcdfghjklmnpqrstvwxyz".toUpperCase();
 
   useEffect(() => { //generate letters once
     letterGenerator()
@@ -20,6 +25,7 @@ export default function Board() {
   useEffect(() => {
     containerRef.current.onmouseleave = leftBoard;
     boardRef.current.onmouseup = touchedBoard
+    mouseControlSquares()
   })
 
   function leftBoard() {
@@ -49,16 +55,19 @@ export default function Board() {
     for (let i = 0; i < squaresUsed; i++) {
       resultStr += selectedLetters[i].innerHTML;
     }
-    console.log(resultStr)
     return resultStr;
   }  
 
   function mouseControlSquares() {
-    var square = document.getElementsByClassName('wordsquare') as HTMLCollectionOf<HTMLElement>
+    var score = 0;
+    var setScoreFunc = props.setScore;
+    var square = document.getElementsByClassName(styles.wordsquare) as HTMLCollectionOf<HTMLElement>
 
     for (let i = 0; i < square.length; i++) {
   
       square[i].addEventListener("mousedown", function(e) {
+      console.log('mousedown');
+
         mousedown = true;
         e.preventDefault();
         square[i].style.backgroundColor = "orange";
@@ -85,42 +94,40 @@ export default function Board() {
             selectedLetters[i].style.backgroundColor = "lightgreen";
           } 
         }
-        
-        // if (isLoaded == false) {
-        //   allGreen();
+
+        if (correctWords.has(resultWordString())) {
+          allGreen();
+
+        } else if (words.words.includes(resultWordString()) && !correctWords.has(resultWordString())) { //fix later
+          correctWords.add(resultWordString());
     
-        // } else if (correctWords.has(resultWordString())) {
-        //   allGreen();
+          if (squaresUsed == 1) {
+            squaresUsed = 0;
+            selectedLetters[0].style.backgroundColor = "lightgreen";
+          }
     
-        // } else if (loadedWordString.includes(resultWordString()) && !correctWords.has(resultWordString())) { //fix later
-        //   correctWords.add(resultWordString());
+          for (let i = 0; i < squaresUsed; i++) { //process the words here
     
-        //   if (squaresUsed == 1) {
-        //     squaresUsed = 0;
-        //     selectedLetters[0].style.backgroundColor = "lightgreen";
-        //   }
+            if (vowelString.includes(selectedLetters[i].innerHTML)) {
+              score += 3;
+            } else if (consonantString.includes(selectedLetters[i].innerHTML)) {
+              score += 6;
+            }
+            setScoreFunc(score)
+            selectedLetters[i].style.backgroundColor = "lightgreen";
+          } 
     
-        //   for (let i = 0; i < squaresUsed; i++) { //process the words here
-    
-        //     if (vowelString.includes(selectedLetters[i].innerHTML)) {
-        //       score += 3;
-        //     } else if (consonantString.includes(selectedLetters[i].innerHTML)) {
-        //       score += 6;
-        //     }
-        //     scoring.innerHTML = score;
-        //     selectedLetters[i].style.backgroundColor = "lightgreen";
-        //   } 
-    
-        // } else if (!loadedWordString.includes(selectedLetters.join())) {
-    
-        //   allGreen();
-        // }
-        // squaresUsed = 0;
-    
+        } else if (!words.words.includes(selectedLetters.join())) {
+          allGreen();
+        }
+
+        console.log(correctWords)
+
       });
       selectedLetters = [];
     }    
   }
+
   
   function letterGenerator() { //generate the letters
     let letterSquares = boardRef.current.getElementsByTagName('div'); //div elements
