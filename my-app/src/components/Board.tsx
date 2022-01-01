@@ -55,7 +55,7 @@ export default function Board(props: Props) {
     for (let i = 0; i < squaresUsed; i++) {
       resultStr += selectedLetters[i].innerHTML;
     }
-    console.log(resultStr);
+
     return resultStr;
   }  
 
@@ -64,13 +64,10 @@ export default function Board(props: Props) {
     var setScoreFunc = props.setScore;
     var square = document.getElementsByClassName(styles.wordsquare) as HTMLCollectionOf<HTMLElement>
     var correctWords = new Set();
-    // console.log(words.words);
-
 
     for (let i = 0; i < square.length; i++) {
   
       square[i].addEventListener("mousedown", function(e) {
-      console.log('mousedown');
 
         mousedown = true;
         e.preventDefault();
@@ -94,18 +91,15 @@ export default function Board(props: Props) {
         mousedown = false;
         
         if ((e.target! as Element).className != "board" && (e.target! as Element).nodeName != "DIV") {
-          console.log('00000000000000000');
           for (let i = 0; i < squaresUsed; i++) {
             selectedLetters[i].style.backgroundColor = "lightgreen";
           } 
         }
 
         if (correctWords.has(resultWordString())) {
-          console.log('111111111111111');
           allGreen();
 
         } else if (words.words.includes(resultWordString().toLowerCase()) && !correctWords.has(resultWordString().toLowerCase())) { //fix later
-          console.log('222222222222');
           correctWords.add(resultWordString());
     
           if (squaresUsed == 1) {
@@ -125,18 +119,14 @@ export default function Board(props: Props) {
           } 
     
         } else if (!words.words.includes(selectedLetters.join().toLowerCase())) {
-          console.log('3333333333333333333333333');
           allGreen();
         }
-
-        console.log(correctWords)
 
       });
       selectedLetters = [];
     }    
   }
 
-  
   function letterGenerator() { //generate the letters
     let letterSquares = boardRef.current.getElementsByTagName('div'); //div elements
     let arrayOfGenLetters = Array.prototype.slice.call(letterSquares); //array of div elements

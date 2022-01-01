@@ -1,4 +1,15 @@
-.headers {
+.headers, .scoreHeader {
   color: white;
-  font-size: 20px;
+  font-size: 30px;
 }
+
+.container {
+  position: absolute;
+  top: 60px;
+  right: 500px;
+}
+
+.scoreContainer {
+
+}
+

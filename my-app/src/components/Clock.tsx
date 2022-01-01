@@ -41,7 +41,7 @@ export default function Clock(props:Props) {
   }
 
   return (
-    <div>
+    <div className="clockContainer">
       <div className="time-clock">
         <h1 className="clock-header">Game Time Remaining</h1>
         <h2 id="timer" ref={timerElement}>2:00</h2>

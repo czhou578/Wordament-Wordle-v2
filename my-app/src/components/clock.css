@@ -1,3 +1,9 @@
 .clock-header, #timer {
   color: white;
 }
+
+.clockContainer {
+  position: absolute;
+  left: 20%;
+  top: 60px;
+}
