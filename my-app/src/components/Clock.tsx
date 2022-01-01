@@ -15,7 +15,7 @@ export default function Clock(props:Props) {
     setInterval(() => {
       update()
     }, 1000)
-  })
+  }, [])
   
   function update() { //update the clock
     const minutes = Math.floor(time / 60);

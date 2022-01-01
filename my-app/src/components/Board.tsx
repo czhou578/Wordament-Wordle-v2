@@ -14,7 +14,6 @@ export default function Board(props: Props) {
   var squaresUsed = 0;
   var mousedown: boolean;
   var selectedLetters = new Array(16);
-  var correctWords = new Set();
   var vowelString = "aeiou".toUpperCase();
   var consonantString = "bcdfghjklmnpqrstvwxyz".toUpperCase();
 
@@ -23,10 +22,11 @@ export default function Board(props: Props) {
   }, [])
 
   useEffect(() => {
+    console.log('use effect that runnssss');
     containerRef.current.onmouseleave = leftBoard;
     boardRef.current.onmouseup = touchedBoard
     mouseControlSquares()
-  })
+  }, [])
 
   function leftBoard() {
     for (let i = 0; i < squaresUsed; i++) {
@@ -55,6 +55,7 @@ export default function Board(props: Props) {
     for (let i = 0; i < squaresUsed; i++) {
       resultStr += selectedLetters[i].innerHTML;
     }
+    console.log(resultStr);
     return resultStr;
   }  
 
@@ -62,6 +63,9 @@ export default function Board(props: Props) {
     var score = 0;
     var setScoreFunc = props.setScore;
     var square = document.getElementsByClassName(styles.wordsquare) as HTMLCollectionOf<HTMLElement>
+    var correctWords = new Set();
+    // console.log(words.words);
+
 
     for (let i = 0; i < square.length; i++) {
   
@@ -90,15 +94,18 @@ export default function Board(props: Props) {
         mousedown = false;
         
         if ((e.target! as Element).className != "board" && (e.target! as Element).nodeName != "DIV") {
+          console.log('00000000000000000');
           for (let i = 0; i < squaresUsed; i++) {
             selectedLetters[i].style.backgroundColor = "lightgreen";
           } 
         }
 
         if (correctWords.has(resultWordString())) {
+          console.log('111111111111111');
           allGreen();
 
-        } else if (words.words.includes(resultWordString()) && !correctWords.has(resultWordString())) { //fix later
+        } else if (words.words.includes(resultWordString().toLowerCase()) && !correctWords.has(resultWordString().toLowerCase())) { //fix later
+          console.log('222222222222');
           correctWords.add(resultWordString());
     
           if (squaresUsed == 1) {
@@ -117,7 +124,8 @@ export default function Board(props: Props) {
             selectedLetters[i].style.backgroundColor = "lightgreen";
           } 
     
-        } else if (!words.words.includes(selectedLetters.join())) {
+        } else if (!words.words.includes(selectedLetters.join().toLowerCase())) {
+          console.log('3333333333333333333333333');
           allGreen();
         }
 
