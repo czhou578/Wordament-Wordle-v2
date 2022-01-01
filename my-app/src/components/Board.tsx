@@ -1,5 +1,6 @@
 import { MutableRefObject, useEffect, useRef } from "react";
 import styles from "./board.module.css";
+import './words.json'
 
 
 export default function Board() {
