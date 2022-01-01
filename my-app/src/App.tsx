@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { StartingModal } from "./components/StartingModal";
 import Board from "./components/Board";
 import Clock from "./components/Clock";
 import styles from './app.module.css'
 import ScoreBoard from "./components/ScoreBoard";
+import EndGameModal from "./components/EndGameModal";
 
 function App() {
   const [showBoard, setShowBoard] = useState(false);
@@ -14,8 +15,12 @@ function App() {
     <div className={styles.appContainer}>
       <div>
         {!showBoard ? (
-          <StartingModal showBoard={showBoard} showBoardHandler={setShowBoard} />
-        ) : (
+          <EndGameModal />
+          // <StartingModal showBoard={showBoard} showBoardHandler={setShowBoard} />
+        ) : timesUp ? (
+          <EndGameModal />
+          
+        ) :(
           <div>
             <Clock timesUp={timesUp} setTimesUp={setTimesUp}/>
             <Board setScore={setScore}/>

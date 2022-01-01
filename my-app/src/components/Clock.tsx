@@ -34,6 +34,7 @@ export default function Clock(props:Props) {
 
     if (minutes < 0) {
       timerElement.current.innerHTML = "Time's Up!";
+      props.setTimesUp(true)
     }
 
     time--;
