@@ -15,10 +15,9 @@ function App() {
     <div className={styles.appContainer}>
       <div>
         {!showBoard ? (
-          // <EndGameModal />
           <StartingModal showBoard={showBoard} showBoardHandler={setShowBoard} />
         ) : timesUp ? (
-          <EndGameModal />
+          <EndGameModal showBoardHandler={setShowBoard}/>
         ) :(
           <div>
             <Clock timesUp={timesUp} setTimesUp={setTimesUp}/>

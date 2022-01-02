@@ -1,6 +1,10 @@
 import styles from './endmodal.module.css'
 
-export default function EndGameModal() {
+interface Props {
+  showBoardHandler: (param: boolean) => void
+}
+
+export default function EndGameModal(props: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.headerContainer}>
@@ -16,7 +20,7 @@ export default function EndGameModal() {
         <img src="https://img.freepik.com/free-vector/golden-ribbon-design_1102-2552.jpg?size=626&ext=jpg" alt="not available" className={styles.imag}/>
       </div>
       <div className={styles.btnContainer}>
-        <button className={styles.button}>Play Again</button>
+        <button className={styles.button} onClick={() => props.showBoardHandler(true)}>Play Again</button>
       </div>
     </div>
   )
