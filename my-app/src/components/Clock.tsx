@@ -1,21 +1,26 @@
-import { MutableRefObject, useEffect, useRef } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import './clock.css'
 
 interface Props {
   setTimesUp: (param: boolean) => void
-  timesUp: boolean
 }
 
 export default function Clock(props:Props) {
   const timerElement = useRef() as MutableRefObject<HTMLInputElement>
-  const starting = 2;
+  const [stopTimer, setStopTimer] = useState(false)
+  const starting = 0.05;
   let time = starting * 60; //seconds
 
   useEffect(() => {
-    setInterval(() => {
-      update()
-    }, 1000)
-  }, [])
+    if (time >= 0) {
+      setInterval(() => {
+        update()
+      }, 1000)
+    } else {
+      return clearInterval()
+    }
+
+  }, [time])
   
   function update() { //update the clock
     const minutes = Math.floor(time / 60);
@@ -27,14 +32,15 @@ export default function Clock(props:Props) {
     } else if (seconds < 10 && seconds > 0) {
       timerElement.current.innerHTML = `${minutes}:${0}${seconds}`;
 
-    } else {
+    } else if (seconds >= 10 && seconds > 0) {
+      console.log(timerElement.current);
       timerElement.current.innerHTML = `${minutes}:${seconds}`;
       seconds = seconds < 10 ? "10" + seconds : seconds;
     }
 
-    if (minutes < 0) {
-      timerElement.current.innerHTML = "Time's Up!";
+    if (time < 0) {
       props.setTimesUp(true)
+      return;
     }
 
     time--;

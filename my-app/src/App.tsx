@@ -11,6 +11,8 @@ function App() {
   const [timesUp, setTimesUp] = useState(false)
   const [score, setScore] = useState(0)
 
+  console.log(timesUp);
+
   return (
     <div className={styles.appContainer}>
       <div>
@@ -18,9 +20,9 @@ function App() {
           <StartingModal showBoard={showBoard} showBoardHandler={setShowBoard} />
         ) : timesUp ? (
           <EndGameModal showBoardHandler={setShowBoard}/>
-        ) :(
+        ) : (
           <div>
-            <Clock timesUp={timesUp} setTimesUp={setTimesUp}/>
+            <Clock setTimesUp={setTimesUp}/>
             <Board setScore={setScore}/>
             <ScoreBoard score={score}/>
           </div>
