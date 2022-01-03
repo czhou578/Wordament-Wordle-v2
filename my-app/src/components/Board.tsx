@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useRef } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import styles from "./board.module.css";
 import words from './words.json'
 
@@ -10,6 +10,7 @@ export default function Board(props: Props) {
   const boardRef = useRef() as MutableRefObject<HTMLInputElement>
   const wordSquareRef = useRef() as MutableRefObject<HTMLInputElement>
   const containerRef = useRef() as MutableRefObject<HTMLInputElement> 
+  const [correctWordsList, setCorrectWordslist] = useState([])
 
   var squaresUsed = 0;
   var mousedown: boolean;
@@ -22,7 +23,6 @@ export default function Board(props: Props) {
   }, [])
 
   useEffect(() => {
-    console.log('use effect that runnssss');
     containerRef.current.onmouseleave = leftBoard;
     boardRef.current.onmouseup = touchedBoard
     mouseControlSquares()

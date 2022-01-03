@@ -5,13 +5,12 @@ import Clock from "./components/Clock";
 import styles from './app.module.css'
 import ScoreBoard from "./components/ScoreBoard";
 import EndGameModal from "./components/EndGameModal";
+import CorrectWordsLog from "./components/CorrectWordsLog";
 
 function App() {
   const [showBoard, setShowBoard] = useState(false);
   const [timesUp, setTimesUp] = useState(false)
   const [score, setScore] = useState(0)
-
-  console.log(timesUp);
 
   return (
     <div className={styles.appContainer}>
@@ -19,9 +18,10 @@ function App() {
         {!showBoard ? (
           <StartingModal showBoard={showBoard} showBoardHandler={setShowBoard} />
         ) : timesUp ? (
-          <EndGameModal showBoardHandler={setShowBoard}/>
+          <EndGameModal showBoardHandler={setShowBoard} score={score}/>
         ) : (
           <div>
+            <CorrectWordsLog />
             <Clock setTimesUp={setTimesUp}/>
             <Board setScore={setScore}/>
             <ScoreBoard score={score}/>

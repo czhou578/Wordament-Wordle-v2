@@ -7,8 +7,7 @@ interface Props {
 
 export default function Clock(props:Props) {
   const timerElement = useRef() as MutableRefObject<HTMLInputElement>
-  const [stopTimer, setStopTimer] = useState(false)
-  const starting = 0.05;
+  const starting = 2;
   let time = starting * 60; //seconds
 
   useEffect(() => {
@@ -33,7 +32,6 @@ export default function Clock(props:Props) {
       timerElement.current.innerHTML = `${minutes}:${0}${seconds}`;
 
     } else if (seconds >= 10 && seconds > 0) {
-      console.log(timerElement.current);
       timerElement.current.innerHTML = `${minutes}:${seconds}`;
       seconds = seconds < 10 ? "10" + seconds : seconds;
     }

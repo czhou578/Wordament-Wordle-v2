@@ -2,6 +2,7 @@ import styles from './endmodal.module.css'
 
 interface Props {
   showBoardHandler: (param: boolean) => void
+  score: number
 }
 
 export default function EndGameModal(props: Props) {
@@ -12,7 +13,7 @@ export default function EndGameModal(props: Props) {
       </div>
       <div className={styles.preTextContainer}>
         <pre className={styles.preText}>
-          Your final score is: . 
+          Your final score is: {props.score}. 
           Want to play again? Please click the Play Again button below.
         </pre>
       </div>
