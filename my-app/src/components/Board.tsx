@@ -12,7 +12,7 @@ export default function Board(props: Props) {
   const boardRef = useRef() as MutableRefObject<HTMLInputElement>
   const wordSquareRef = useRef() as MutableRefObject<HTMLInputElement>
   const containerRef = useRef() as MutableRefObject<HTMLInputElement> 
-  const [correctWordsList, setCorrectWordsList] = useState<string[]>([])
+  const [correctWordsList, setCorrectWordsList] = useState<unknown[]>([])
 
   var squaresUsed = 0;
   var mousedown: boolean;
@@ -107,11 +107,9 @@ export default function Board(props: Props) {
 
         } else if (words.words.includes(resultWordString().toLowerCase()) && !correctWords.has(resultWordString().toLowerCase())) { //fix later
           correctWords.add(resultWordString());
-          // let newArray = 
-          // console.log(newArray);
-          let newArray: Type[] = Array.from(correctWords)
+          let newArray: unknown[] = Array.from(correctWords)
 
-          setCorrectWordsList([...newArray])
+          setCorrectWordsList(newArray)
           console.log(correctWordsList);
     
           if (squaresUsed == 1) {

@@ -1,6 +1,6 @@
 
 interface Props {
-  correctWordsList: string[]
+  correctWordsList: unknown[]
 }
 
 export default function CorrectWordsLog(params:Props) {
