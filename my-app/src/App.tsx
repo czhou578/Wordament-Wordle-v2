@@ -5,7 +5,6 @@ import Clock from "./components/Clock";
 import styles from './app.module.css'
 import ScoreBoard from "./components/ScoreBoard";
 import EndGameModal from "./components/EndGameModal";
-import CorrectWordsLog from "./components/CorrectWordsLog";
 
 function App() {
   const [showBoard, setShowBoard] = useState(false);
@@ -21,9 +20,8 @@ function App() {
           <EndGameModal showBoardHandler={setShowBoard} score={score}/>
         ) : (
           <div>
-            <CorrectWordsLog />
             <Clock setTimesUp={setTimesUp}/>
-            <Board setScore={setScore}/>
+            <Board setScore={setScore} />
             <ScoreBoard score={score}/>
           </div>
         )}

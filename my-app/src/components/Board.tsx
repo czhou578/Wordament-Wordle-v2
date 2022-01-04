@@ -1,5 +1,7 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { Type } from "typescript";
 import styles from "./board.module.css";
+import CorrectWordsLog from "./CorrectWordsLog";
 import words from './words.json'
 
 interface Props {
@@ -10,13 +12,15 @@ export default function Board(props: Props) {
   const boardRef = useRef() as MutableRefObject<HTMLInputElement>
   const wordSquareRef = useRef() as MutableRefObject<HTMLInputElement>
   const containerRef = useRef() as MutableRefObject<HTMLInputElement> 
-  const [correctWordsList, setCorrectWordslist] = useState([])
+  const [correctWordsList, setCorrectWordsList] = useState<string[]>([])
 
   var squaresUsed = 0;
   var mousedown: boolean;
   var selectedLetters = new Array(16);
   var vowelString = "aeiou".toUpperCase();
   var consonantString = "bcdfghjklmnpqrstvwxyz".toUpperCase();
+
+  console.log(correctWordsList);
 
   useEffect(() => { //generate letters once
     letterGenerator()
@@ -27,6 +31,8 @@ export default function Board(props: Props) {
     boardRef.current.onmouseup = touchedBoard
     mouseControlSquares()
   }, [])
+
+
 
   function leftBoard() {
     for (let i = 0; i < squaresUsed; i++) {
@@ -101,6 +107,12 @@ export default function Board(props: Props) {
 
         } else if (words.words.includes(resultWordString().toLowerCase()) && !correctWords.has(resultWordString().toLowerCase())) { //fix later
           correctWords.add(resultWordString());
+          // let newArray = 
+          // console.log(newArray);
+          let newArray: Type[] = Array.from(correctWords)
+
+          setCorrectWordsList([...newArray])
+          console.log(correctWordsList);
     
           if (squaresUsed == 1) {
             squaresUsed = 0;
@@ -173,6 +185,9 @@ export default function Board(props: Props) {
         <div className={styles.wordsquare} ref={wordSquareRef}>E</div>
         <div className={styles.wordsquare} ref={wordSquareRef}>A</div>
         <div className={styles.wordsquare} ref={wordSquareRef}>N</div>
+      </div>
+      <div>
+        <CorrectWordsLog correctWordsList={correctWordsList}/>
       </div>
     </div>
   );
