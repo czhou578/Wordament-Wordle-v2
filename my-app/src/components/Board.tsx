@@ -12,7 +12,7 @@ export default function Board(props: Props) {
   const boardRef = useRef() as MutableRefObject<HTMLInputElement>
   const wordSquareRef = useRef() as MutableRefObject<HTMLInputElement>
   const containerRef = useRef() as MutableRefObject<HTMLInputElement> 
-  const [correctWordsList, setCorrectWordsList] = useState<unknown[]>([])
+  const [correctWordsList, setCorrectWordsList] = useState<string[]>([])
 
   var squaresUsed = 0;
   var mousedown: boolean;
@@ -109,7 +109,7 @@ export default function Board(props: Props) {
           correctWords.add(resultWordString());
           let newArray: unknown[] = Array.from(correctWords)
 
-          setCorrectWordsList(newArray)
+          setCorrectWordsList(newArray as string[])
           console.log(correctWordsList);
     
           if (squaresUsed == 1) {
