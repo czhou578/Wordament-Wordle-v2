@@ -40,7 +40,6 @@ export default function Clock(props:Props) {
 
     if (time < 0) {
       props.setTimesUp(true)
-      // time = 120
       return;
     }
 

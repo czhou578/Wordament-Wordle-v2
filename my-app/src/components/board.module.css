@@ -25,3 +25,33 @@
   margin-left: 30%;
   margin-top: 30%;
 }
+
+.logContainer {
+  position: absolute;
+  right: 65%;
+  bottom: 17%;
+  height: 600px;
+  width: 350px;
+  background-color: lightcyan;
+  /* overflow-y: scroll; */
+}
+
+.wordList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.word {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.test > h2 {
+  white-space: nowrap;
+  position: relative;
+  left: 95px;
+  padding-bottom: 10px;
+}
+
+

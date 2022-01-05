@@ -20,6 +20,7 @@ export default function Board(props: Props) {
   var consonantString = "bcdfghjklmnpqrstvwxyz".toUpperCase();
 
   console.log('esdfasdfadfadfadfada');
+  console.log('correct words list: ' + correctWordsList);
 
 
   useEffect(() => { //generate letters once
@@ -114,7 +115,7 @@ export default function Board(props: Props) {
           let newArray: unknown[] = Array.from(correctWords)
 
           setCorrectWordsList(newArray as string[])
-          console.log('hit this execution point');
+          // console.log('correct words list: ' + correctWordsList);
     
           if (squaresUsed == 1) {
             squaresUsed = 0;
@@ -188,8 +189,16 @@ export default function Board(props: Props) {
         <div className={styles.wordsquare} ref={wordSquareRef}>A</div>
         <div className={styles.wordsquare} ref={wordSquareRef}>N</div>
       </div>
-      <div>
-        <CorrectWordsLog correctWordsList={correctWordsList}/>
+      <div className={styles.logContainer}>
+        <div className={styles.test}>
+          <h2>Found Words</h2>
+          <div className={styles.wordList}>
+            {correctWordsList.map((element, index) => {
+              return <div key={index}><h4 className={styles.word}>{element}</h4></div>
+            })}
+          </div>
+        </div>
+        {/* <CorrectWordsLog correctWordsList={correctWordsList}/> */}
       </div>
     </div>
   );

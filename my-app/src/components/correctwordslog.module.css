@@ -1,0 +1,16 @@
+.container {
+  background-color: tan;
+  border-radius: 5px;
+  height: 500px;
+  width: 300px;
+  margin-right: 200px;
+  margin-bottom: 300px;
+}
+
+.scrollableDiv {
+
+}
+
+.scrollableDiv > h2 {
+  margin-left: 26%;
+}
