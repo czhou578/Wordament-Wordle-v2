@@ -1,7 +1,7 @@
 import styles from './endmodal.module.css'
 
 interface Props {
-  showBoardHandler: (param: boolean) => void
+  setTimesUp: (param: boolean) => void
   score: number
 }
 
@@ -21,7 +21,7 @@ export default function EndGameModal(props: Props) {
         <img src="https://img.freepik.com/free-vector/golden-ribbon-design_1102-2552.jpg?size=626&ext=jpg" alt="not available" className={styles.imag}/>
       </div>
       <div className={styles.btnContainer}>
-        <button className={styles.button} onClick={() => props.showBoardHandler(true)}>Play Again</button>
+        <button className={styles.button} onClick={() => props.setTimesUp(false)}>Play Again</button>
       </div>
     </div>
   )

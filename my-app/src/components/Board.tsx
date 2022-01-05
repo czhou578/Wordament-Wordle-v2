@@ -1,5 +1,4 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react";
-import { Type } from "typescript";
 import styles from "./board.module.css";
 import CorrectWordsLog from "./CorrectWordsLog";
 import words from './words.json'
@@ -20,7 +19,8 @@ export default function Board(props: Props) {
   var vowelString = "aeiou".toUpperCase();
   var consonantString = "bcdfghjklmnpqrstvwxyz".toUpperCase();
 
-  console.log(correctWordsList);
+  console.log('esdfasdfadfadfadfada');
+
 
   useEffect(() => { //generate letters once
     letterGenerator()
@@ -30,6 +30,7 @@ export default function Board(props: Props) {
     containerRef.current.onmouseleave = leftBoard;
     boardRef.current.onmouseup = touchedBoard
     mouseControlSquares()
+    console.log(correctWordsList);
   }, [])
 
 
@@ -56,8 +57,11 @@ export default function Board(props: Props) {
     }
   }
 
-  function resultWordString() {
+  function resultWordString() : string{
     var resultStr = "";
+
+    if (squaresUsed == 1) return ""
+
     for (let i = 0; i < squaresUsed; i++) {
       resultStr += selectedLetters[i].innerHTML;
     }
@@ -110,7 +114,7 @@ export default function Board(props: Props) {
           let newArray: unknown[] = Array.from(correctWords)
 
           setCorrectWordsList(newArray as string[])
-          console.log(correctWordsList);
+          console.log('hit this execution point');
     
           if (squaresUsed == 1) {
             squaresUsed = 0;

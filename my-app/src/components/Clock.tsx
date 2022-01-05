@@ -7,7 +7,7 @@ interface Props {
 
 export default function Clock(props:Props) {
   const timerElement = useRef() as MutableRefObject<HTMLInputElement>
-  const starting = 2;
+  const starting = 0.05;
   let time = starting * 60; //seconds
 
   useEffect(() => {
