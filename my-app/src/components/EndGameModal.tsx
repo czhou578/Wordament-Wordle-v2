@@ -1,8 +1,8 @@
-import styles from './endmodal.module.css'
+import styles from "./endmodal.module.css";
 
 interface Props {
-  setTimesUp: (param: boolean) => void
-  score: number
+  setTimesUp: (param: boolean) => void;
+  score: number;
 }
 
 export default function EndGameModal(props: Props) {
@@ -13,16 +13,25 @@ export default function EndGameModal(props: Props) {
       </div>
       <div className={styles.preTextContainer}>
         <pre className={styles.preText}>
-          Your final score is: {props.score}. 
-          Want to play again? Please click the Play Again button below.
+          Your final score is: {props.score}. Want to play again? Please click
+          the Play Again button below.
         </pre>
       </div>
       <div className={styles.image}>
-        <img src="https://img.freepik.com/free-vector/golden-ribbon-design_1102-2552.jpg?size=626&ext=jpg" alt="not available" className={styles.imag}/>
+        <img
+          src="https://img.freepik.com/free-vector/golden-ribbon-design_1102-2552.jpg?size=626&ext=jpg"
+          alt="not available"
+          className={styles.imag}
+        />
       </div>
       <div className={styles.btnContainer}>
-        <button className={styles.button} onClick={() => window.location.reload()}>Play Again</button>
+        <button
+          className={styles.button}
+          onClick={() => window.location.reload()}
+        >
+          Play Again
+        </button>
       </div>
     </div>
-  )
+  );
 }

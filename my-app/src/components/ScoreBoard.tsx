@@ -1,7 +1,7 @@
-import styles from './scoreboard.module.css'
+import styles from "./scoreboard.module.css";
 
 interface Props {
-  score: number
+  score: number;
 }
 
 export default function ScoreBoard(props: Props) {
@@ -12,5 +12,5 @@ export default function ScoreBoard(props: Props) {
         <h3 className={styles.headers}>{props.score}</h3>
       </div>
     </div>
-  )
+  );
 }

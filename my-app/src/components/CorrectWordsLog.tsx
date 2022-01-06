@@ -1,21 +1,23 @@
-import { useEffect, useState } from "react"
-import styles from './correctwordslog.module.css'
+import { useEffect, useState } from "react";
+import styles from "./correctwordslog.module.css";
 
 interface Props {
-  correctWordsList: string[]
+  correctWordsList: string[];
 }
 
 export default function CorrectWordsLog(props: Props) {
-
-  const [wordsList, setWordsList] = useState<string[]>([]) 
+  const [wordsList, setWordsList] = useState<string[]>([]);
 
   useEffect(() => {
-    sortAscendingWords(props.correctWordsList)
-  }, [])
+    sortAscendingWords(props.correctWordsList);
+  }, []);
 
   function sortAscendingWords(array: string[]) {
-    console.log('wordsList: ' + wordsList);
-    setWordsList(wordsList => [...wordsList, props.correctWordsList[props.correctWordsList.length - 1]])
+    console.log("wordsList: " + wordsList);
+    setWordsList((wordsList) => [
+      ...wordsList,
+      props.correctWordsList[props.correctWordsList.length - 1],
+    ]);
   }
 
   return (
@@ -25,5 +27,5 @@ export default function CorrectWordsLog(props: Props) {
         {wordsList}
       </div>
     </div>
-  )
+  );
 }
