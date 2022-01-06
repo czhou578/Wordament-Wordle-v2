@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:ital,wght@1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,100&family=Roboto+Condensed:wght@300&family=Roboto:ital,wght@1,900&display=swap');
+
 .container {
   height: 500px;
   width: 500px;
@@ -6,6 +9,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 5px;
 }
 
 .headerContainer {
@@ -13,14 +17,20 @@
 }
 
 .header {
+  color: rgb(105, 119, 22);
   font-size: 40px;
 }
 
 .preTextContainer {
-  padding: 10px;
+  padding: 15px;
+  margin-left: 10px;
 }
 
 .preText {
+  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 200;
   white-space: pre-wrap;
   font-size: 25px;
 }

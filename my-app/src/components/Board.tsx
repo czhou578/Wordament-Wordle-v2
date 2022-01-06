@@ -19,9 +19,6 @@ export default function Board(props: Props) {
   var vowelString = "aeiou".toUpperCase();
   var consonantString = "bcdfghjklmnpqrstvwxyz".toUpperCase();
 
-  console.log("esdfasdfadfadfadfada");
-  console.log("correct words list: " + correctWordsList);
-
   useEffect(() => {
     //generate letters once
     letterGenerator();
@@ -31,7 +28,6 @@ export default function Board(props: Props) {
     containerRef.current.onmouseleave = leftBoard;
     boardRef.current.onmouseup = touchedBoard;
     mouseControlSquares();
-    console.log(correctWordsList);
   }, []);
 
   function leftBoard() {
@@ -119,7 +115,6 @@ export default function Board(props: Props) {
           let newArray: unknown[] = Array.from(correctWords);
 
           setCorrectWordsList(newArray as string[]);
-          // console.log('correct words list: ' + correctWordsList);
 
           if (squaresUsed == 1) {
             squaresUsed = 0;
@@ -176,13 +171,6 @@ export default function Board(props: Props) {
       }
     }
   }
-
-  function scrollBarBottom() {
-    let wordDiv = wordDisplayDiv.current
-    console.log(wordDiv);
-    wordDiv.scrollTop = wordDiv.scrollHeight - wordDiv.clientHeight
-  }
-
 
   return (
     <div className={styles.container} ref={containerRef}>

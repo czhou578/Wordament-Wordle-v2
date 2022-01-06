@@ -14,7 +14,7 @@ export const StartingModal = (props: Props) => {
         </div>
         <div className={styles.descrip_contain}>
           <pre className={styles.text}>
-            This is Wordament. Click and drag across the boar d to
+            This is Wordament. Click and drag across the board to
             select words. Each letter that you select in either direction will
             accumulate for points, which will be shown up in the scoreboard.
             There is a timer that counts down the time, so make sure you look
