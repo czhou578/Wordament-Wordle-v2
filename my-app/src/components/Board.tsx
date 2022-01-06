@@ -1,6 +1,5 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 import styles from "./board.module.css";
-import CorrectWordsLog from "./CorrectWordsLog";
 import words from "./words.json";
 
 interface Props {
@@ -9,6 +8,7 @@ interface Props {
 
 export default function Board(props: Props) {
   const boardRef = useRef() as MutableRefObject<HTMLInputElement>;
+  const wordDisplayDiv = useRef() as MutableRefObject<HTMLInputElement>;
   const wordSquareRef = useRef() as MutableRefObject<HTMLInputElement>;
   const containerRef = useRef() as MutableRefObject<HTMLInputElement>;
   const [correctWordsList, setCorrectWordsList] = useState<string[]>([]);
@@ -177,6 +177,13 @@ export default function Board(props: Props) {
     }
   }
 
+  function scrollBarBottom() {
+    let wordDiv = wordDisplayDiv.current
+    console.log(wordDiv);
+    wordDiv.scrollTop = wordDiv.scrollHeight - wordDiv.clientHeight
+  }
+
+
   return (
     <div className={styles.container} ref={containerRef}>
       <div className={styles.board} ref={boardRef}>
@@ -233,7 +240,7 @@ export default function Board(props: Props) {
         <div className={styles.test}>
           <h2>Found Words</h2>
           <div className={styles.wordList}>
-            {correctWordsList.map((element, index) => {
+            {correctWordsList.slice(0).reverse().map((element, index) => {
               return (
                 <div key={index}>
                   <h4 className={styles.word}>{element}</h4>

@@ -33,7 +33,7 @@
   height: 600px;
   width: 350px;
   background-color: lightcyan;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
 }
 
 .wordList {

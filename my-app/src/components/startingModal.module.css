@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital,wght@1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:ital,wght@1,900&display=swap');
+
+
 .content {
   position: absolute;
   top: 10%;
@@ -15,6 +19,11 @@
   font-size: 25px;
 }
 
+.header > h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
 .descrip_contain {
   margin-top: 30%;
   padding: 15px;
@@ -23,6 +32,8 @@
 .text {
   white-space: pre-wrap;
   font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .button_contain {
@@ -31,7 +42,7 @@
 
 .button {
   font-size: 20px;
-  padding: 0.25rem 1.75rem;
+  padding: 1.25rem 1.75rem;
   background-color: green;
   color: white;
   cursor: pointer;
