@@ -8,7 +8,6 @@ interface Props {
 
 export default function Board(props: Props) {
   const boardRef = useRef() as MutableRefObject<HTMLInputElement>;
-  const wordDisplayDiv = useRef() as MutableRefObject<HTMLInputElement>;
   const wordSquareRef = useRef() as MutableRefObject<HTMLInputElement>;
   const containerRef = useRef() as MutableRefObject<HTMLInputElement>;
   const [correctWordsList, setCorrectWordsList] = useState<string[]>([]);
@@ -228,13 +227,16 @@ export default function Board(props: Props) {
         <div className={styles.test}>
           <h2>Found Words</h2>
           <div className={styles.wordList}>
-            {correctWordsList.slice(0).reverse().map((element, index) => {
-              return (
-                <div key={index}>
-                  <h4 className={styles.word}>{element}</h4>
-                </div>
-              );
-            })}
+            {correctWordsList
+              .slice(0)
+              .reverse()
+              .map((element, index) => {
+                return (
+                  <div key={index}>
+                    <h4 className={styles.word}>{element}</h4>
+                  </div>
+                );
+              })}
           </div>
         </div>
         {/* <CorrectWordsLog correctWordsList={correctWordsList}/> */}

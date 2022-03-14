@@ -2,29 +2,30 @@ import { useState } from "react";
 import { StartingModal } from "./components/StartingModal";
 import Board from "./components/Board";
 import Clock from "./components/Clock";
-import styles from './app.module.css'
+import styles from "./app.module.css";
 import ScoreBoard from "./components/ScoreBoard";
 import EndGameModal from "./components/EndGameModal";
 
 function App() {
   const [showBoard, setShowBoard] = useState(false);
-  const [timesUp, setTimesUp] = useState(false)
-  const [score, setScore] = useState(0)
-
-  console.log(timesUp);
+  const [timesUp, setTimesUp] = useState(false);
+  const [score, setScore] = useState(0);
 
   return (
     <div className={styles.appContainer}>
       <div>
         {!showBoard ? (
-          <StartingModal showBoard={showBoard} showBoardHandler={setShowBoard} />
+          <StartingModal
+            showBoard={showBoard}
+            showBoardHandler={setShowBoard}
+          />
         ) : timesUp ? (
-          <EndGameModal score={score} setTimesUp={setTimesUp}/>
+          <EndGameModal score={score} setTimesUp={setTimesUp} />
         ) : (
           <div>
-            <Clock setTimesUp={setTimesUp}/>
+            <Clock setTimesUp={setTimesUp} />
             <Board setScore={setScore} />
-            <ScoreBoard score={score}/>
+            <ScoreBoard score={score} />
           </div>
         )}
       </div>

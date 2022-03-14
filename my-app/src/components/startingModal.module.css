@@ -1,14 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital,wght@1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:ital,wght@1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital,wght@1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:ital,wght@1,900&display=swap");
 
+.container {
+  margin-top: -20px !important;
+}
 
 .content {
   position: absolute;
-  top: 10%;
+  top: 5%;
   height: 800px;
   width: 900px;
   background-color: lightblue;
-  margin-left: 27%;
+  margin-left: 25%;
   border-radius: 5px;
   box-shadow: 0 0 10px 10px darkblue;
 }
@@ -20,8 +23,8 @@
 }
 
 .header > h2 {
-  font-family: 'Open Sans', sans-serif;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .descrip_contain {
@@ -32,8 +35,8 @@
 .text {
   white-space: pre-wrap;
   font-size: 18px;
-  font-family: 'Open Sans', sans-serif;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .button_contain {
