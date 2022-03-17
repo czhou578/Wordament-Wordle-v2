@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 import styles from "./board.module.css";
 import words from "./words.json";
@@ -239,7 +240,6 @@ export default function Board(props: Props) {
               })}
           </div>
         </div>
-        {/* <CorrectWordsLog correctWordsList={correctWordsList}/> */}
       </div>
     </div>
   );

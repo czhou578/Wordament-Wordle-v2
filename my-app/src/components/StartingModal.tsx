@@ -15,7 +15,9 @@ export const StartingModal = (props: Props) => {
         <div className={styles.descrip_contain}>
           <ul className={styles.ul}>
             <li>Click and drag across the board to select words</li>
-            <li>Each word selected will count for points, shown in the scoreboard.</li>
+            <li>
+              Each word selected will count for points, shown in the scoreboard.
+            </li>
             <li>Find as many words as you can before the time expires!</li>
           </ul>
         </div>
