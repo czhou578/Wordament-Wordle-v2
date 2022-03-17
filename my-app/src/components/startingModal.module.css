@@ -28,15 +28,22 @@
 }
 
 .descrip_contain {
-  margin-top: 30%;
+  margin-top: 10%;
   padding: 15px;
 }
 
-.text {
+.ul {
+  margin-left: 25%;
+  margin-bottom: 10%;
+  /* margin-top: -10%; */
+}
+
+.ul > li {
   white-space: pre-wrap;
   font-size: 18px;
   font-family: "Open Sans", sans-serif;
   font-family: "Roboto", sans-serif;
+  margin-bottom: 50px;
 }
 
 .button_contain {
