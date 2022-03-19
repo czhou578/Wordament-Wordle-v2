@@ -13,7 +13,6 @@ export default function CorrectWordsLog(props: Props) {
   }, []);
 
   function sortAscendingWords(array: string[]) {
-    console.log("wordsList: " + wordsList);
     setWordsList((wordsList) => [
       ...wordsList,
       props.correctWordsList[props.correctWordsList.length - 1],
