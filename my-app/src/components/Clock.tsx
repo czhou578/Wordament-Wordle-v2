@@ -8,8 +8,8 @@ interface Props {
 export default function Clock(props: Props) {
   const timerElement = useRef() as MutableRefObject<HTMLInputElement>;
 
-  const starting = 2;
-  let time = starting * 60; //seconds
+  const starting: number = 2;
+  let time: number = starting * 60; //seconds
 
   useEffect(() => {
     if (time >= 0) {
@@ -23,15 +23,15 @@ export default function Clock(props: Props) {
 
   function update() {
     //update the clock
-    const minutes = Math.floor(time / 60);
+    const minutes: number = Math.floor(time / 60);
     let seconds: string | number = time % 60;
 
     if (seconds == 0) {
-      timerElement.current.innerHTML = `${minutes}:${0}${0}`;
+      timerElement!.current.innerHTML = `${minutes}:${0}${0}`;
     } else if (seconds < 10 && seconds > 0) {
-      timerElement.current.innerHTML = `${minutes}:${0}${seconds}`;
+      timerElement!.current.innerHTML = `${minutes}:${0}${seconds}`;
     } else if (seconds >= 10 && seconds > 0) {
-      timerElement.current.innerHTML = `${minutes}:${seconds}`;
+      timerElement!.current.innerHTML = `${minutes}:${seconds}`;
       seconds = seconds < 10 ? "10" + seconds : seconds;
     }
 

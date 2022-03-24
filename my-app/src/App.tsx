@@ -9,9 +9,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const [showBoard, setShowBoard] = useState(false);
-  const [timesUp, setTimesUp] = useState(false);
-  const [score, setScore] = useState(0);
+  const [showBoard, setShowBoard] = useState<boolean>(false);
+  const [timesUp, setTimesUp] = useState<boolean>(false);
+  const [score, setScore] = useState<number>(0);
 
   const notify = () => toast("Welcome to the Game");
 

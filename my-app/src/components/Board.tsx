@@ -13,11 +13,11 @@ export default function Board(props: Props) {
   const containerRef = useRef() as MutableRefObject<HTMLInputElement>;
   const [correctWordsList, setCorrectWordsList] = useState<string[]>([]);
 
-  var squaresUsed = 0;
-  var mousedown: boolean;
-  var selectedLetters = new Array(16);
-  var vowelString = "aeiou".toUpperCase();
-  var consonantString = "bcdfghjklmnpqrstvwxyz".toUpperCase();
+  let squaresUsed: number = 0;
+  let mousedown: boolean;
+  let selectedLetters: HTMLElement[] = new Array(16);
+  let vowelString: string = "aeiou".toUpperCase();
+  let consonantString: string = "bcdfghjklmnpqrstvwxyz".toUpperCase();
 
   useEffect(() => {
     //generate letters once
@@ -25,8 +25,8 @@ export default function Board(props: Props) {
   }, []);
 
   useEffect(() => {
-    containerRef.current.onmouseleave = leftBoard;
-    boardRef.current.onmouseup = touchedBoard;
+    containerRef.current!.onmouseleave = leftBoard;
+    boardRef.current!.onmouseup = touchedBoard;
     mouseControlSquares();
   }, []);
 
@@ -54,7 +54,7 @@ export default function Board(props: Props) {
   }
 
   function resultWordString(): string {
-    var resultStr = "";
+    var resultStr: string = "";
 
     if (squaresUsed == 1) return "";
 
@@ -66,12 +66,12 @@ export default function Board(props: Props) {
   }
 
   function mouseControlSquares() {
-    var score = 0;
+    var score: number = 0;
     var setScoreFunc = props.setScore;
     var square = document.getElementsByClassName(
       styles.wordsquare
     ) as HTMLCollectionOf<HTMLElement>;
-    var correctWords = new Set();
+    var correctWords = new Set<string>();
 
     for (let i = 0; i < square.length; i++) {
       square[i].addEventListener("mousedown", function (e) {
@@ -86,7 +86,7 @@ export default function Board(props: Props) {
         if (mousedown == true) {
           square[i].style.backgroundColor = "orange";
           if ((e.target! as Element).nodeName == "DIV") {
-            selectedLetters[squaresUsed] = e.target;
+            selectedLetters[squaresUsed] = e.target as HTMLElement;
             squaresUsed++;
           }
         }
@@ -145,11 +145,12 @@ export default function Board(props: Props) {
   function letterGenerator() {
     //generate the letters
     let letterSquares = boardRef.current.getElementsByTagName("div"); //div elements
-    let arrayOfGenLetters = Array.prototype.slice.call(letterSquares); //array of div elements
-    let vowelString = "aeiou".toUpperCase();
-    let consonantString = "bcdfghjklmnpqrstvwxyz".toUpperCase();
+    let arrayOfGenLetters: HTMLElement[] =
+      Array.prototype.slice.call(letterSquares); //array of div elements
+    let vowelString: string = "aeiou".toUpperCase();
+    let consonantString: string = "bcdfghjklmnpqrstvwxyz".toUpperCase();
 
-    const vowelDivInt = new Set(); //unique set representing divs
+    const vowelDivInt = new Set<number>(); //unique set representing divs
 
     while (vowelDivInt.size != 8) {
       //determines which number div will receive vowel value
@@ -157,7 +158,8 @@ export default function Board(props: Props) {
     }
 
     for (let i = 0; i < arrayOfGenLetters.length; i++) {
-      let result = "";
+      let result: string = "";
+
       for (let j = 0; j < vowelDivInt.size; j++) {
         if (vowelDivInt.has(i)) {
           result = vowelString.charAt(Math.floor(Math.random() * 5)).toString();
