@@ -1,9 +1,10 @@
 var msql = require('mysql')
 
-var con = msql.createConnection({
-  user: "colinzhou",
+module.exports = msql.createConnection({
   host: "localhost",
-  password: "podium218",
+  user: "colizu",
+  password: "issaquah",
   database: "wordament",
   multipleStatements: true
 })
+
