@@ -56,7 +56,7 @@ export default function Board(props: Props) {
   function resultWordString(): string {
     var resultStr: string = "";
 
-    if (squaresUsed == 1) return "";
+    if (squaresUsed === 1) return "";
 
     for (let i = 0; i < squaresUsed; i++) {
       resultStr += selectedLetters[i].innerHTML;
@@ -83,9 +83,9 @@ export default function Board(props: Props) {
       });
 
       square[i].addEventListener("mouseover", function (e) {
-        if (mousedown == true) {
+        if (mousedown === true) {
           square[i].style.backgroundColor = "orange";
-          if ((e.target! as Element).nodeName == "DIV") {
+          if ((e.target! as Element).nodeName === "DIV") {
             selectedLetters[squaresUsed] = e.target as HTMLElement;
             squaresUsed++;
           }
@@ -96,8 +96,8 @@ export default function Board(props: Props) {
         mousedown = false;
 
         if (
-          (e.target! as Element).className != "board" &&
-          (e.target! as Element).nodeName != "DIV"
+          (e.target! as Element).className !== "board" &&
+          (e.target! as Element).nodeName !== "DIV"
         ) {
           for (let i = 0; i < squaresUsed; i++) {
             selectedLetters[i].style.backgroundColor = "lightgreen";
@@ -116,7 +116,7 @@ export default function Board(props: Props) {
 
           setCorrectWordsList(newArray as string[]);
 
-          if (squaresUsed == 1) {
+          if (squaresUsed === 1) {
             squaresUsed = 0;
             selectedLetters[0].style.backgroundColor = "lightgreen";
           }
@@ -152,7 +152,7 @@ export default function Board(props: Props) {
 
     const vowelDivInt = new Set<number>(); //unique set representing divs
 
-    while (vowelDivInt.size != 8) {
+    while (vowelDivInt.size !== 8) {
       //determines which number div will receive vowel value
       vowelDivInt.add(Math.floor(Math.random() * 16));
     }

@@ -26,7 +26,7 @@ export default function Clock(props: Props) {
     const minutes: number = Math.floor(time / 60);
     let seconds: string | number = time % 60;
 
-    if (seconds == 0) {
+    if (seconds === 0) {
       timerElement!.current.innerHTML = `${minutes}:${0}${0}`;
     } else if (seconds < 10 && seconds > 0) {
       timerElement!.current.innerHTML = `${minutes}:${0}${seconds}`;

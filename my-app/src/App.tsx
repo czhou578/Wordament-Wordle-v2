@@ -5,15 +5,13 @@ import Clock from "./components/Clock";
 import styles from "./app.module.css";
 import ScoreBoard from "./components/ScoreBoard";
 import EndGameModal from "./components/EndGameModal";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [showBoard, setShowBoard] = useState<boolean>(false);
   const [timesUp, setTimesUp] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
-
-  const notify = () => toast("Welcome to the Game");
 
   return (
     <div className={styles.appContainer}>
