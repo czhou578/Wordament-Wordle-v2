@@ -13,7 +13,9 @@ export const Headerbar: React.FC = () => {
             Signup
           </a>
         </Link>
-        <a href="#login">Login</a>
+        <Link to={"/login"}>
+          <a href="#login">Login</a>
+        </Link>
       </div>
     </div>
   );

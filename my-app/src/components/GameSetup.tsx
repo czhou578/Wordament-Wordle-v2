@@ -13,52 +13,52 @@ export const GameSetup: React.FC = () => {
   const [showBoard, setShowBoard] = useState<boolean>(false);
   const [timesUp, setTimesUp] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
-  
+
   return (
     <div className={styles.appContainer}>
-    {showBoard ? <Headerbar /> : null}
-    <div>
-      {!showBoard ? (
-        <>
-          <StartingModal
-            showBoard={showBoard}
-            showBoardHandler={setShowBoard}
-          />
-          <ToastContainer
-            position="bottom-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-        </>
-      ) : timesUp ? (
-        <>
-          <EndGameModal score={score} setTimesUp={setTimesUp} />
-          <ToastContainer
-            position="bottom-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-        </>
-      ) : (
-        <div style={{ marginTop: "20px" }}>
-          <Clock setTimesUp={setTimesUp} />
-          <Board setScore={setScore} />
-          <ScoreBoard score={score} />
-        </div>
-      )}
+      {showBoard ? <Headerbar /> : null}
+      <div>
+        {!showBoard ? (
+          <>
+            <StartingModal
+              showBoard={showBoard}
+              showBoardHandler={setShowBoard}
+            />
+            <ToastContainer
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
+          </>
+        ) : timesUp ? (
+          <>
+            <EndGameModal score={score} setTimesUp={setTimesUp} />
+            <ToastContainer
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
+          </>
+        ) : (
+          <div style={{ marginTop: "20px" }}>
+            <Clock setTimesUp={setTimesUp} />
+            <Board setScore={setScore} />
+            <ScoreBoard score={score} />
+          </div>
+        )}
+      </div>
     </div>
-  </div>
-  )
-}
+  );
+};
