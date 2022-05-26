@@ -1,7 +1,8 @@
 const express = require("express");
-const db = require("./src/backend/database");
-
+const db = require("./database");
+const userRouter = require("./routes/users");
 const app = express();
+
 app.use(express.json());
 
 db.connect(function (err) {
@@ -9,4 +10,8 @@ db.connect(function (err) {
   console.log("Connected");
 });
 
-app.listen(3001);
+app.use("/users", userRouter);
+
+app.listen(3001, () => {
+  console.log("Server listening on Port 3001");
+});

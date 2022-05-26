@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "webpack.config.js", "server.js"]
+  "include": ["src", "webpack.config.js", "server.js", "database.js", "routes"]
 }

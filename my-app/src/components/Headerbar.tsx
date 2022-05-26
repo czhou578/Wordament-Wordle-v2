@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 export const Headerbar: React.FC = () => {
   return (
     <div className="header">
-      <a href="#default" className="logo">
-        Wordament
-      </a>
+      <Link to={"/"}>
+        <a href="#default" className="logo">
+          Wordament
+        </a>
+      </Link>
       <div className="header-right">
         <Link to={"/signup"}>
           <a className="active" href="#signup">
