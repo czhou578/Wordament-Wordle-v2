@@ -1,12 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "es5",
-      "ES6"
-    ],
+    "lib": ["dom", "dom.iterable", "es5", "ES6"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -21,7 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-, "webpack.config.js", "server.js"  ]
+  "include": ["src", "webpack.config.js", "server.js"]
 }

@@ -3,11 +3,9 @@
   border-radius: 5px;
   height: 500px;
   width: 300px;
+  padding-top: 50px !important;
   margin-right: 200px;
   margin-bottom: 300px;
-}
-
-.scrollableDiv {
 }
 
 .scrollableDiv > h2 {
