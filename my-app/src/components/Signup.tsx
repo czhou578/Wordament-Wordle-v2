@@ -2,6 +2,7 @@ import { Headerbar } from "./Headerbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
+import axios from "axios";
 
 export const Signup: React.FC = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -11,25 +12,16 @@ export const Signup: React.FC = () => {
 
   const signupHandler = async () => {
     let newUser = {
-      ID: uuid(),
+      id: uuid(),
       userName: userName,
       password: password,
       firstName: firstName,
       lastName: lastName,
     };
 
-    const response = await fetch("http://localhost:3001/users/new-user", {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "applications/json",
-      },
-      body: JSON.stringify(newUser),
+    axios.post("http://localhost:3001/users/new-user", newUser).then(() => {
+      console.log("success");
     });
-
-    if (response.status !== 200) {
-      console.log("error, please try again.");
-    }
   };
 
   return (
@@ -49,6 +41,7 @@ export const Signup: React.FC = () => {
             id="formGroupExampleInput"
             placeholder="First Name"
             onChange={(e) => setFirstName(e.target.value)}
+            name="firstName"
           />
         </div>
         <div
@@ -64,6 +57,7 @@ export const Signup: React.FC = () => {
             id="formGroupExampleInput"
             placeholder="Last Name"
             onChange={(e) => setLastName(e.target.value)}
+            name="lastName"
           />
         </div>
         <div
@@ -79,6 +73,7 @@ export const Signup: React.FC = () => {
             id="formGroupExampleInput"
             placeholder="New Username"
             onChange={(e) => setUserName(e.target.value)}
+            name="userName"
           />
         </div>
         <div
@@ -94,6 +89,7 @@ export const Signup: React.FC = () => {
             id="formGroupExampleInput2"
             placeholder="New Password"
             onChange={(e) => setPassword(e.target.value)}
+            name="password"
           />
         </div>
         <button
