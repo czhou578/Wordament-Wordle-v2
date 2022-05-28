@@ -3,12 +3,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
+import { Credentials } from "../api";
+import { useNavigate } from "react-router-dom";
 
 export const Signup: React.FC = () => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const navigate = useNavigate()
+
+  const setCredentials = (entry: Credentials) => {
+    console.log('set credentials')
+    localStorage.setItem("user", JSON.stringify(entry))
+  }
 
   const signupHandler = async () => {
     let newUser = {
@@ -20,7 +28,10 @@ export const Signup: React.FC = () => {
     };
 
     axios.post("http://localhost:3001/users/new-user", newUser).then(() => {
+      setCredentials({Username: userName, Password: password})
       console.log("success");
+    }).then(() => {
+      navigate("/dashboard")
     });
   };
 
