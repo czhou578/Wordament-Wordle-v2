@@ -1,21 +1,21 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface Credentials {
-  Username: string
-  Password: string
+  Username: string;
+  Password: string;
 }
 
 const tokenSlice = createSlice({
-  name: 'token',
+  name: "token",
   initialState: {
-    token: null as string | null
+    token: null as string | null,
   },
   reducers: {
     setToken(state, action: PayloadAction<string>) {
-      state.token = action.payload
-    }
-  }
-})
+      state.token = action.payload;
+    },
+  },
+});
 
-export const {setToken} = tokenSlice.actions
-export default tokenSlice.reducer
+export const { setToken } = tokenSlice.actions;
+export default tokenSlice.reducer;

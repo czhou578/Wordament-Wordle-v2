@@ -12,13 +12,13 @@ export const Signup: React.FC = () => {
   const [lastName, setLastName] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const setCredentials = (entry: Credentials) => {
-    console.log('set credentials')
-    localStorage.setItem("user", JSON.stringify(entry))
-  }
+    console.log("set credentials");
+    localStorage.setItem("user", JSON.stringify(entry));
+  };
 
   const signupHandler = async () => {
     let newUser = {
@@ -30,11 +30,11 @@ export const Signup: React.FC = () => {
     };
 
     axios.post("http://localhost:3001/users/new-user", newUser).then((data) => {
-      dispatch(setToken(data.data.accessToken))
-      setCredentials({Username: userName, Password: password})
-      navigate("/dashboard")
+      dispatch(setToken(data.data.accessToken));
+      setCredentials({ Username: userName, Password: password });
+      navigate("/dashboard");
       console.log("success");
-    })
+    });
   };
 
   return (
