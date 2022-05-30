@@ -4,13 +4,6 @@ const database = require("../database");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 
-router.get("/user", authenticateToken, (req, res) => {
-  // res.send({})
-  //query for username using the authenticate token
-  //send back the result contining username
-  console.log("You are In!");
-});
-
 router.post("/new-user", (req, res) => {
   console.log(req.body);
   const { userName, password, firstName, lastName, id } = req.body;

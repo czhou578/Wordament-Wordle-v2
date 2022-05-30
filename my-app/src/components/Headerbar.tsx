@@ -1,7 +1,7 @@
 import "./headerbar.css";
 import { Link } from "react-router-dom";
 
-export const Headerbar: React.FC = () => {
+export const Headerbar: React.FC<{ userName?: string }> = ({ userName }) => {
   return (
     <div className="header">
       <Link to={"/"}>
@@ -9,16 +9,26 @@ export const Headerbar: React.FC = () => {
           Wordament
         </a>
       </Link>
-      <div className="header-right">
-        <Link to={"/signup"}>
-          <a className="active" href="#signup">
-            Signup
-          </a>
-        </Link>
-        <Link to={"/login"}>
-          <a href="#login">Login</a>
-        </Link>
-      </div>
+      {userName ? (
+        <div className="header-right">
+          <Link to={""}>
+            <a href="" className="active">
+              Hi {userName}!
+            </a>
+          </Link>
+        </div>
+      ) : (
+        <div className="header-right">
+          <Link to={"/signup"}>
+            <a className="active" href="#signup">
+              Signup
+            </a>
+          </Link>
+          <Link to={"/login"}>
+            <a href="#login">Login</a>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
