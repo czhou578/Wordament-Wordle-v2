@@ -14,17 +14,17 @@ export default function Clock(props: Props) {
   let time: number = starting * 3; //seconds
 
   useEffect(() => {
-    if (!props.timesUp) {
-      console.log("time: " + time);
-      console.log("timesup: " + props.timesUp);
-      setInterval(() => {
-        console.log("continue");
-        update();
-      }, 1000);
-    } else {
-      return clearInterval();
-    }
-  }, [props.timesUp]);
+    console.log("time: " + time);
+    console.log("timesup: " + props.timesUp);
+    setInterval(() => {
+      if (time === -1) {
+        props.setTimesUp(true);
+        return () => clearInterval();
+      }
+      console.log("continue");
+      update();
+    }, 1000);
+  }, [time]);
 
   function update() {
     //update the clock
@@ -39,11 +39,6 @@ export default function Clock(props: Props) {
     } else if (seconds >= 10 && seconds > 0) {
       timerElement!.current.innerHTML = `${minutes}:${seconds}`;
       seconds = seconds < 10 ? "10" + seconds : seconds;
-    }
-
-    if (time < 0) {
-      props.setTimesUp(true);
-      return;
     }
 
     time--;

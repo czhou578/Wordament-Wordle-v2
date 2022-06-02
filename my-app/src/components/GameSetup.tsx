@@ -39,7 +39,7 @@ export const GameSetup: React.FC = () => {
 
   useEffect(() => {
     if (token) {
-      setUserName(parseJwt(token));
+      setUserName(parseJwt(token).name);
     }
   }, []);
 
@@ -54,7 +54,7 @@ export const GameSetup: React.FC = () => {
       console.log(userName);
       let payload = {
         score: score,
-        userName: userName,
+        userName: userName.name,
       };
 
       dispatch(setGameScore(score));
@@ -74,11 +74,7 @@ export const GameSetup: React.FC = () => {
 
   return (
     <div className={styles.appContainer}>
-      {showBoard && userName !== "" ? (
-        <Headerbar userName={userName} />
-      ) : (
-        <Headerbar />
-      )}
+      {userName !== "" ? <Headerbar userName={userName} /> : <Headerbar />}
       <div>
         {!showBoard ? (
           <>
@@ -101,17 +97,6 @@ export const GameSetup: React.FC = () => {
         ) : timesUp ? (
           <>
             <EndGameModal score={score} setTimesUp={setTimesUp} />
-            <ToastContainer
-              position="bottom-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-            />
           </>
         ) : (
           <div style={{ marginTop: "20px" }}>
