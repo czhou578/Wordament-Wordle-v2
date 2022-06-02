@@ -7,8 +7,8 @@
 
 .content {
   position: absolute;
-  top: 5%;
-  height: 800px;
+  top: 17%;
+  height: 580px;
   width: 900px;
   background-color: lightblue;
   margin-left: 25%;
@@ -35,7 +35,6 @@
 .ul {
   margin-left: 25%;
   margin-bottom: 10%;
-  /* margin-top: -10%; */
 }
 
 .ul > li {
@@ -47,6 +46,7 @@
 }
 
 .button_contain {
+  margin-top: -100px;
   margin-left: 70%;
 }
 

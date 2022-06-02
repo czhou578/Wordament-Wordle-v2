@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { Headerbar } from "./Headerbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setToken } from "../api";
 
 export const Login: React.FC = () => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const loginHandler = () => {
+    let loginRequestObj = {
+      userName: userName,
+      password: password,
+    };
+
+    axios({
+      method: "post",
+      url: "http://localhost:3001/users/loggedin",
+      data: {
+        loginRequestObj,
+      },
+    }).then(function (data) {
+      dispatch(setToken(data.data.accessToken));
+      navigate("/dashboard");
+      console.log("success");
+    });
+  };
+
   return (
     <div>
       <Headerbar />
@@ -19,6 +47,7 @@ export const Login: React.FC = () => {
             className="form-control"
             id="formGroupExampleInput"
             placeholder="Enter Username"
+            onChange={(e) => setUserName(e.target.value)}
           />
         </div>
         <div
@@ -33,11 +62,13 @@ export const Login: React.FC = () => {
             className="form-control"
             id="formGroupExampleInput2"
             placeholder="Enter Password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <button
           type="button"
           className="btn btn-primary d-grid gap-2 col-4 mx-auto"
+          onClick={() => loginHandler()}
         >
           Login
         </button>

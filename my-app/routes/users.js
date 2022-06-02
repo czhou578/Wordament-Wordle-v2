@@ -4,6 +4,19 @@ const database = require("../database");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 
+router.post("/loggedin", (req, res) => {
+  const { loginRequestObj } = req.body;
+  console.log(loginRequestObj);
+
+  let sql = `SELECT * FROM User WHERE Username = '${loginRequestObj.userName}' AND LoginPassword = '${loginRequestObj.password}'`;
+  database.query(sql, function (error, result) {
+    if (error) throw error;
+    const user = { name: loginRequestObj.userName };
+    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
+    res.send({ accessToken: accessToken });
+  });
+});
+
 router.post("/new-user", (req, res) => {
   console.log(req.body);
   const { userName, password, firstName, lastName, id } = req.body;

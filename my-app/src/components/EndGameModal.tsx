@@ -13,8 +13,8 @@ export default function EndGameModal(props: Props) {
       </div>
       <div className={styles.preTextContainer}>
         <pre className={styles.preText}>
-          Your final score is: {props.score}. Want to play again? Please click
-          the Play Again button below.
+          Your final score is: {props.score}. If you want your scores to be
+          saved, register for an account!
         </pre>
       </div>
       <div className={styles.image}>

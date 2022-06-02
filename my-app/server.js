@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require("./database");
 const userRouter = require("./routes/users");
+const scoreRouter = require("./routes/scores");
 const app = express();
 const cors = require("cors");
 
@@ -13,6 +14,7 @@ db.connect(function (err) {
 });
 
 app.use("/users", userRouter);
+app.use("/scores", scoreRouter);
 
 app.listen(3001, () => {
   console.log("Server listening on Port 3001");

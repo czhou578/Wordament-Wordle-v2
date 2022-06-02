@@ -5,7 +5,7 @@ import { RootState } from "../redux/store"; //import to get rid of ts error in u
 
 export const UserDashboard: React.FC = () => {
   const [userName, setUserName] = useState<string>("");
-  const token = useSelector((state: RootState) => state.token.token);
+  const token = useSelector((state: RootState) => state.info.token.token);
 
   function parseJwt(token: string) {
     var base64Url = token.split(".")[1];

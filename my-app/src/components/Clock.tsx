@@ -3,26 +3,32 @@ import "./clock.css";
 
 interface Props {
   setTimesUp: (param: boolean) => void;
+  timesUp: boolean;
 }
 
 export default function Clock(props: Props) {
   const timerElement = useRef() as MutableRefObject<HTMLInputElement>;
 
   const starting: number = 2;
-  let time: number = starting * 60; //seconds
+  // let time: number = starting * 60; //seconds
+  let time: number = starting * 3; //seconds
 
   useEffect(() => {
-    if (time >= 0) {
+    if (!props.timesUp) {
+      console.log("time: " + time);
+      console.log("timesup: " + props.timesUp);
       setInterval(() => {
+        console.log("continue");
         update();
       }, 1000);
     } else {
       return clearInterval();
     }
-  }, [time]);
+  }, [props.timesUp]);
 
   function update() {
     //update the clock
+    console.log("clock");
     const minutes: number = Math.floor(time / 60);
     let seconds: string | number = time % 60;
 
