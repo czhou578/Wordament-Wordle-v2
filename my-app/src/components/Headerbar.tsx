@@ -17,7 +17,7 @@ export const Headerbar: React.FC<{ userName?: string }> = ({ userName }) => {
       {userName ? (
         <div className="header-right">
           <Link to={"/signup"}>
-            <a href="#signup">Signup</a>
+            <a className="signup">Signup</a>
           </Link>
           <Link to={"/dashboard"}>
             <a className="active">Hi {userName}!</a>

@@ -8,6 +8,7 @@ export const UserDashboard: React.FC = () => {
   const [userName, setUserName] = useState<string>("");
   const [highestScore, setHighestScore] = useState<number | null>(null);
   const [lowestScore, setLowestScore] = useState<number | null>(null);
+  const [averageScore, setAverageScore] = useState<number | null>(null);
   const token = useSelector((state: RootState) => state.info.token.token);
 
   function parseJwt(token: string) {
@@ -42,14 +43,26 @@ export const UserDashboard: React.FC = () => {
         data: { userName: parseJwt(token).name },
       });
 
-      Promise.all([highScoreRequest, lowestScoreRequest]).then((data) => {
-        let highScore = JSON.parse(JSON.stringify(data[0].data))["MAX(Score)"];
-        let lowScore = JSON.parse(JSON.stringify(data[1].data))["MIN(Score)"];
-
-        console.log(highScore);
-        setHighestScore(highScore);
-        setLowestScore(lowScore);
+      const avgScoreRequest = axios({
+        method: "post",
+        url: "http://localhost:3001/scores/average-score",
+        data: { userName: parseJwt(token).name },
       });
+
+      Promise.all([highScoreRequest, lowestScoreRequest, avgScoreRequest]).then(
+        (data) => {
+          let highScore = JSON.parse(JSON.stringify(data[0].data))[
+            "MAX(Score)"
+          ];
+          let lowScore = JSON.parse(JSON.stringify(data[1].data))["MIN(Score)"];
+          let avgScore = JSON.parse(JSON.stringify(data[2].data))["AVG(Score)"];
+
+          console.log(highScore);
+          setHighestScore(highScore);
+          setLowestScore(lowScore);
+          setAverageScore(avgScore);
+        }
+      );
     }
   }, []);
 
@@ -75,7 +88,7 @@ export const UserDashboard: React.FC = () => {
               className="card"
               style={{
                 width: "18rem",
-                marginLeft: "30px",
+                marginLeft: "10px",
                 marginBottom: "10px",
               }}
             >
@@ -98,6 +111,21 @@ export const UserDashboard: React.FC = () => {
                 <h5 className="card-title">Lowest Score</h5>
                 <p className="card-text">
                   Your lowest score was <b>{lowestScore}</b>
+                </p>
+              </div>
+            </div>
+            <div
+              className="card"
+              style={{
+                width: "18rem",
+                marginLeft: "10px",
+                marginBottom: "10px",
+              }}
+            >
+              <div className="card-body">
+                <h5 className="card-title">Average Score</h5>
+                <p className="card-text" style={{ marginLeft: "-20px" }}>
+                  Your average score was <b>{averageScore}</b>
                 </p>
               </div>
             </div>

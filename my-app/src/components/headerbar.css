@@ -40,6 +40,11 @@
   color: white;
 }
 
+.header a.signup {
+  background-color: orange;
+  color: white;
+}
+
 /* Float the link section to the right */
 .header-right {
   float: right;

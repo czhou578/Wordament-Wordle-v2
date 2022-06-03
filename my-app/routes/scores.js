@@ -41,4 +41,17 @@ router.post("/lowest-score", (req, res) => {
   });
 });
 
+router.post("/average-score", (req, res) => {
+  const { userName } = req.body;
+  console.log(req.body);
+
+  let sql = `SELECT AVG(Score) FROM SCORES WHERE Username = '${userName}' `;
+
+  database.query(sql, function (error, result) {
+    if (error) throw error;
+    console.log(result);
+    res.send(result[0]);
+  });
+});
+
 module.exports = router;
