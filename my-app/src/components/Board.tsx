@@ -1,23 +1,38 @@
 /* eslint-disable no-loop-func */
 import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setFoundWords } from "../api";
 import styles from "./board.module.css";
 import words from "./words.json";
 
 interface Props {
   setScore: (active: number) => void;
+  setTimesUp: (active: boolean) => void;
+  timesUp: boolean;
 }
 
 export default function Board(props: Props) {
   const boardRef = useRef() as MutableRefObject<HTMLInputElement>;
   const wordSquareRef = useRef() as MutableRefObject<HTMLInputElement>;
   const containerRef = useRef() as MutableRefObject<HTMLInputElement>;
+  const isMounted = useRef(false);
   const [correctWordsList, setCorrectWordsList] = useState<string[]>([]);
+  const dispatch = useDispatch();
 
   let squaresUsed: number = 0;
   let mousedown: boolean;
   let selectedLetters: HTMLElement[] = new Array(16);
   let vowelString: string = "aeiou".toUpperCase();
   let consonantString: string = "bcdfghjklmnpqrstvwxyz".toUpperCase();
+
+  useEffect(() => {
+    if (isMounted.current) {
+      console.log("before dispatched");
+      console.log("dispatched");
+    } else {
+      isMounted.current = true;
+    }
+  }, [props.timesUp]);
 
   useEffect(() => {
     //generate letters once
@@ -115,6 +130,7 @@ export default function Board(props: Props) {
           let newArray: unknown[] = Array.from(correctWords);
 
           setCorrectWordsList(newArray as string[]);
+          dispatch(setFoundWords(newArray as string[]));
 
           if (squaresUsed === 1) {
             squaresUsed = 0;

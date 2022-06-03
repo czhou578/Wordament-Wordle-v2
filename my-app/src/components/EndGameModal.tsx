@@ -11,6 +11,10 @@ interface Props {
 
 export default function EndGameModal(props: Props) {
   const token = useSelector((state: RootState) => state.info.token.token);
+  const wordsList = useSelector(
+    (state: RootState) => state.info.words.foundWords
+  );
+  console.log(wordsList);
   const [signedInModal, setSignedInModal] = useState<boolean>(false);
 
   useEffect(() => {
@@ -36,12 +40,22 @@ export default function EndGameModal(props: Props) {
           </pre>
         )}
       </div>
-      <div className={styles.image}>
-        <img
-          src="https://img.freepik.com/free-vector/golden-ribbon-design_1102-2552.jpg?size=626&ext=jpg"
-          alt="not available"
-          className={styles.imag}
-        />
+      <div className={styles.imgandWords}>
+        <div className={styles.image}>
+          <img
+            src="https://img.freepik.com/free-vector/golden-ribbon-design_1102-2552.jpg?size=626&ext=jpg"
+            alt="not available"
+            className={styles.imag}
+          />
+        </div>
+        <div className={styles.wordsList}>
+          <h3 style={{ marginLeft: "75px" }}>Words You Found</h3>
+          <div className={styles.wordContainer}>
+            {wordsList?.map((element) => {
+              return <p className={styles.words}>{element}</p>;
+            })}
+          </div>
+        </div>
       </div>
       {!signedInModal ? (
         <div className={styles.btnContainer}>

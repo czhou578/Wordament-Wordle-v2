@@ -50,6 +50,8 @@ export const GameSetup: React.FC = () => {
 
       if (token) {
         userName = parseJwt(token);
+      } else {
+        return;
       }
       console.log(userName);
       let payload = {
@@ -101,7 +103,11 @@ export const GameSetup: React.FC = () => {
         ) : (
           <div style={{ marginTop: "20px" }}>
             <Clock setTimesUp={setTimesUp} timesUp={timesUp} />
-            <Board setScore={setScore} />
+            <Board
+              setScore={setScore}
+              timesUp={timesUp}
+              setTimesUp={setTimesUp}
+            />
             <ScoreBoard score={score} />
           </div>
         )}

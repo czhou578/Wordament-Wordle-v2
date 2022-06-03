@@ -3,7 +3,7 @@
 
 .container {
   height: 500px;
-  width: 500px;
+  width: 700px;
   background-color: lightblue;
   position: absolute;
   top: 50%;
@@ -26,6 +26,27 @@
   margin-left: 10px;
 }
 
+.imgandWords {
+  display: flex;
+  margin-top: 20px;
+}
+
+.wordsList {
+  width: 300px;
+  height: 300px;
+  margin-left: 20px;
+}
+
+.wordContainer {
+  margin-left: 30%;
+  background-color: white;
+  overflow-y: scroll;
+}
+
+.words {
+  margin-left: 40%;
+}
+
 .preText {
   font-family: "Lato", sans-serif;
   font-family: "Roboto", sans-serif;
@@ -40,7 +61,7 @@
   justify-content: space-around;
   position: absolute;
   right: 30px;
-  top: 80%;
+  top: 85%;
   margin-left: 5%;
   width: 400px;
 }
@@ -60,8 +81,8 @@
 }
 
 .image {
-  height: 250px;
-  width: 450px;
+  height: 200px;
+  width: 250px;
   margin-left: 20px;
 }
 
