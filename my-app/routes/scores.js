@@ -15,10 +15,30 @@ router.post("/new-score", (req, res) => {
   });
 });
 
-// router.get("/highest-score", (req, res) => {
-//   const { id } = req.body;
+router.post("/highest-score", (req, res) => {
+  const { userName } = req.body;
+  console.log(req.body);
 
-//   let sql = `GET FROM SCORES (Username, score) WHERE `
-// })
+  let sql = `SELECT MAX(Score) FROM SCORES WHERE Username = '${userName}' `;
+
+  database.query(sql, function (error, result) {
+    if (error) throw error;
+    console.log(result);
+    res.send(result[0]);
+  });
+});
+
+router.post("/lowest-score", (req, res) => {
+  const { userName } = req.body;
+  console.log(req.body);
+
+  let sql = `SELECT MIN(Score) FROM SCORES WHERE Username = '${userName}' `;
+
+  database.query(sql, function (error, result) {
+    if (error) throw error;
+    console.log(result);
+    res.send(result[0]);
+  });
+});
 
 module.exports = router;

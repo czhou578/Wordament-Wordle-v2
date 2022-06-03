@@ -36,10 +36,13 @@
 }
 
 .btnContainer {
+  display: flex;
+  justify-content: space-around;
   position: absolute;
   right: 30px;
-  top: 90%;
-  margin-left: 45%;
+  top: 80%;
+  margin-left: 5%;
+  width: 400px;
 }
 
 .button {
@@ -48,6 +51,12 @@
   font-size: 15px;
   background-color: aquamarine;
   cursor: pointer;
+}
+
+.button:nth-child(1) {
+  position: relative;
+  right: 0px;
+  width: 200px;
 }
 
 .image {
