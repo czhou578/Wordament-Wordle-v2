@@ -1,4 +1,4 @@
-import "./headerbar.css";
+import styles from "./headerbar.module.css";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch } from "react-redux";
@@ -8,30 +8,33 @@ export const Headerbar: React.FC<{ userName?: string }> = ({ userName }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="header">
+    <div className={styles.header}>
       <Link to={"/"}>
-        <a href="#default" className="logo">
+        <a href="#default" className={styles.logo}>
           Wordament
         </a>
       </Link>
       {userName ? (
         <div className="header-right">
           <Link to={"/signup"}>
-            <a className="signup">Signup</a>
+            <a className={styles.signup}>Signup</a>
           </Link>
           <Link to={"/dashboard"}>
-            <a className="active">Hi {userName}!</a>
+            <a className={styles.active}>Hi {userName}!</a>
           </Link>
           <Link to={"/"}>
-            <a className="logout" onClick={() => dispatch(deleteToken(""))}>
+            <a
+              className={styles.logout}
+              onClick={() => dispatch(deleteToken(""))}
+            >
               Logout
             </a>
           </Link>
         </div>
       ) : (
-        <div className="header-right">
+        <div className={styles["header-right"]}>
           <Link to={"/signup"}>
-            <a className="active" href="#signup">
+            <a className={styles.active} href="#signup">
               Signup
             </a>
           </Link>
