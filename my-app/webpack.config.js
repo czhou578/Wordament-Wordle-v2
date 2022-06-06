@@ -12,11 +12,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx$?/,
+        test: /\.tsx?$/,
         use: ["ts-loader"],
       },
       {
-        test: /\.css$?/,
+        test: /\.css?$/,
         use: [
           "style-loader",
           {
@@ -29,7 +29,7 @@ module.exports = {
       },
     ],
   },
-  devTool: "inline-source-map",
+  devtool: "inline-source-map",
   resolve: {
     extensions: [".js", ".tsx", "ts"],
   },
