@@ -31,12 +31,13 @@ module.exports = {
   },
   devtool: "inline-source-map",
   resolve: {
-    extensions: [".js", ".tsx", "ts"],
+    extensions: [".js", ".tsx", ".ts"],
   },
   target: "web",
   output: {
-    filename: "[name][contenthash].js",
-    publicPath: "/",
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    clean: true,
   },
   plugins: [new HtmlWebPackPlugin({ template: "./public/index.html" })],
 };
