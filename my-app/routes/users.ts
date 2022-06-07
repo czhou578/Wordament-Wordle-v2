@@ -1,11 +1,10 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
+import { database } from "../database"
+import dotenv from "dotenv"
+import jwt from "jsonwebtoken"
 
-
-require("dotenv").config();
-// const express = require("express");
-const database = require("../database");
+dotenv.config();
 const router = express.Router();
-const jwt = require("jsonwebtoken");
 
 router.post("/loggedin", (req: Request, res: Response) => {
   const { loginRequestObj } = req.body;
@@ -15,7 +14,7 @@ router.post("/loggedin", (req: Request, res: Response) => {
   database.query(sql, function (error: Error, result: any) {
     if (error) throw error;
     const user = { name: loginRequestObj.userName };
-    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
+    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET as any);
     res.send({ accessToken: accessToken });
   });
 });
@@ -28,7 +27,7 @@ router.post("/new-user", (req: Request, res: Response) => {
   database.query(sql, function (error: Error, result: any) {
     if (error) throw error;
     const user = { name: userName };
-    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
+    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET as any);
     res.send({ accessToken: accessToken });
   });
 });
@@ -45,4 +44,4 @@ router.post("/new-user", (req: Request, res: Response) => {
 //   });
 // }
 
-module.exports = router;
+export const userRouter = router;

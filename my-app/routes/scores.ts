@@ -1,7 +1,6 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
+import { database } from "../database";
 
-// const express = require("express");
-const database = require("../database");
 const router = express.Router();
 
 router.post("/new-score", (req: Request, res: Response) => {
@@ -56,4 +55,4 @@ router.post("/average-score", (req: Request, res: Response) => {
   });
 });
 
-module.exports = router;
+export const scoreRouter = router;

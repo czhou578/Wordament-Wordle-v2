@@ -1,6 +1,6 @@
-var msql = require("mysql");
+import mysql from "mysql"
 
-module.exports = msql.createConnection({
+export const database = mysql.createConnection({
   host: "localhost",
   user: "colizu",
   password: "issaquah",

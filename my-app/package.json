@@ -9,9 +9,9 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.0.3",
-    "@types/node": "^16.11.17",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "@types/react-redux": "^7.1.24",
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
     "bootstrap": "^5.2.0-beta1",
@@ -32,11 +32,11 @@
     "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "start": "webpack serve --config webpack.config.js",
+    "start": "react-scripts start",
     "build": "CI= react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serverStart": "nodemon server.js",
+    "serverStart": "nodemon server.ts",
     "prettier": "prettier -w ."
   },
   "eslintConfig": {
@@ -58,6 +58,10 @@
     ]
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/mysql": "^2.15.21",
+    "@types/node": "^17.0.40",
     "@types/uuid": "^8.3.4",
     "nodemon": "^2.0.15",
     "webpack": "^5.65.0",

@@ -1,14 +1,14 @@
-const express = require("express");
-const db = require("./database");
-const userRouter = require("./routes/users");
-const scoreRouter = require("./routes/scores");
+import express from "express";
+import { database } from "./database";
+import cors from "cors"
+import { scoreRouter } from "./routes/scores";
+import { userRouter } from "./routes/users";
 const app = express();
-const cors = require("cors");
 
 app.use(cors());
 app.use(express.json());
 
-db.connect(function (err) {
+database.connect(function (err) {
   if (err) throw err;
   console.log("Connected");
 });

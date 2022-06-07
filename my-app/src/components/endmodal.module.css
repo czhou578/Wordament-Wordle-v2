@@ -39,6 +39,7 @@
 
 .wordContainer {
   margin-left: 30%;
+  max-height: 150px;
   background-color: white;
   overflow-y: scroll;
 }

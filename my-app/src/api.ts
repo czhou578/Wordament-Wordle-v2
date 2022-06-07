@@ -1,9 +1,16 @@
-import { createSlice, PayloadAction, combineReducers } from "@reduxjs/toolkit";
+import { createSlice,  combineReducers } from "@reduxjs/toolkit";
+import { PayloadAction } from "@reduxjs/toolkit";
 
 export interface Credentials {
   Username: string;
   Password: string;
 }
+
+// interface StateTypes {
+//   token: null | string
+//   score: null | number
+//   foundWords: null | string[]
+// }
 
 const tokenSlice = createSlice({
   name: "token",
@@ -11,10 +18,10 @@ const tokenSlice = createSlice({
     token: null as string | null,
   },
   reducers: {
-    setToken(state, action: PayloadAction<string>) {
+    setToken(state: any, action: PayloadAction<string>) {
       state.token = action.payload;
     },
-    deleteToken(state, action: PayloadAction<string>) {
+    deleteToken(state: any, action: PayloadAction<string>) {
       state.token = action.payload;
     },
   },
@@ -26,7 +33,7 @@ const scoreSlice = createSlice({
     score: null as number | null,
   },
   reducers: {
-    setGameScore(state, action: PayloadAction<number>) {
+    setGameScore(state: any, action: PayloadAction<number>) {
       state.score = action.payload;
     },
   },
@@ -38,7 +45,7 @@ const foundWordSlice = createSlice({
     foundWords: null as string[] | null,
   },
   reducers: {
-    setFoundWords(state, action: PayloadAction<string[]>) {
+    setFoundWords(state: any, action: PayloadAction<string[]>) {
       state.foundWords = action.payload;
     },
   },
