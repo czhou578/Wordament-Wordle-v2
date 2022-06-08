@@ -1,16 +1,16 @@
+import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { StartingModal } from "../components/StartingModal";
-import Board from "../components/Board";
-import Clock from "../components/Clock";
-import styles from "../app.module.css";
-import ScoreBoard from "../components/ScoreBoard";
-import EndGameModal from "../components/EndGameModal";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Headerbar } from "../components/Headerbar";
-import { useDispatch, useSelector } from "react-redux";
 import { setGameScore } from "../api";
-import axios from "axios";
+import styles from "../app.module.css";
+import Board from "../components/Board";
+import Clock from "../components/Clock";
+import EndGameModal from "../components/EndGameModal";
+import { Headerbar } from "../components/Headerbar";
+import ScoreBoard from "../components/ScoreBoard";
+import { StartingModal } from "../components/StartingModal";
 import { RootState } from "../redux/store";
 
 export const GameSetup: React.FC = () => {

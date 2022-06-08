@@ -1,8 +1,8 @@
-import styles from "./headerbar.module.css";
-import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { deleteToken } from "../api";
+import styles from "./headerbar.module.css";
 
 export const Headerbar: React.FC<{ userName?: string }> = ({ userName }) => {
   const dispatch = useDispatch();

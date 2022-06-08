@@ -20,4 +20,8 @@
   - change "noEmit" to false in tsconfig.json
 
 - Cannot write file because it would overwrite input file in TS
+
   - specify an outDir to build folder name, and exclude the outDir in the build process in tsconfig.json
+
+- ncu, short for npm-check-update, which you have to install separately.
+  - ncu -u to update all the dependencies in package.json

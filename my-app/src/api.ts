@@ -1,16 +1,9 @@
-import { createSlice, combineReducers } from "@reduxjs/toolkit";
-import { PayloadAction } from "@reduxjs/toolkit";
+import { combineReducers, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface Credentials {
   Username: string;
   Password: string;
 }
-
-// interface StateTypes {
-//   token: null | string
-//   score: null | number
-//   foundWords: null | string[]
-// }
 
 const tokenSlice = createSlice({
   name: "token",

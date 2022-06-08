@@ -1,7 +1,7 @@
-import express, { Request, Response } from "express";
-import { database } from "../database";
 import dotenv from "dotenv";
+import express, { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { database } from "../database";
 
 dotenv.config();
 const router = express.Router();

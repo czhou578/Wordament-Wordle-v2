@@ -1,11 +1,11 @@
-import { Headerbar } from "./Headerbar";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import { v4 as uuid } from "uuid";
-import axios from "axios";
-import { Credentials, setToken } from "../api";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { v4 as uuid } from "uuid";
+import { Credentials, setToken } from "../api";
+import { Headerbar } from "./Headerbar";
 
 export const Signup: React.FC = () => {
   const [firstName, setFirstName] = useState<string>("");

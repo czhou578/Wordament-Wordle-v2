@@ -1,8 +1,8 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Headerbar } from "./Headerbar";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store"; //import to get rid of ts error in useselector
-import axios from "axios";
+import { Headerbar } from "./Headerbar";
 
 export const UserDashboard: React.FC = () => {
   const [userName, setUserName] = useState<string>("");
