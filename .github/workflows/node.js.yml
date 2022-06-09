@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: "17.1"
+          node-version: "16.1"
           cache: "npm"
           cache-dependency-path: my-app/package-lock.json
       - name: Build
