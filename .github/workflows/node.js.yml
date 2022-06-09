@@ -5,23 +5,41 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 jobs:
-  frontend-test :
+  frontend-test:
     name: Frontend Tests
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Use Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16.1
-        cache: 'npm'
-        cache-dependency-path: my-app/package-lock.json
-    - name: Tests
-      run: npm ci
-      working-directory: my-app
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.1
+          cache: "npm"
+          cache-dependency-path: my-app/package-lock.json
+      - name: Tests
+        run: npm ci
+        working-directory: my-app
+  webpack:
+    name: Typescript
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "17.1"
+          cache: "npm"
+          cache-dependency-path: my-app/package-lock.json
+      - name: Build
+        run: |
+          npm ci
+          npm run typescript
+          npm run build
+        working-directory: my-app
   prettier:
     runs-on: ubuntu-latest
     steps:
