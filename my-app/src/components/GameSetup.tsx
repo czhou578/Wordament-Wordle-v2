@@ -1,10 +1,7 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { setGameScore } from "../api";
-import styles from "../app.module.css";
 import Board from "../components/Board";
 import Clock from "../components/Clock";
 import EndGameModal from "../components/EndGameModal";
@@ -12,6 +9,7 @@ import { Headerbar } from "../components/Headerbar";
 import ScoreBoard from "../components/ScoreBoard";
 import { StartingModal } from "../components/StartingModal";
 import { RootState } from "../redux/store";
+import styles from "./setup.module.css";
 
 export const GameSetup: React.FC = () => {
   const [showBoard, setShowBoard] = useState<boolean>(false);
@@ -44,7 +42,6 @@ export const GameSetup: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    console.log("asdfasdfafd");
     if (isMounted.current) {
       let userName;
 
@@ -83,17 +80,6 @@ export const GameSetup: React.FC = () => {
             <StartingModal
               showBoard={showBoard}
               showBoardHandler={setShowBoard}
-            />
-            <ToastContainer
-              position="bottom-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
             />
           </>
         ) : timesUp ? (

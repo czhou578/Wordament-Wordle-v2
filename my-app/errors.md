@@ -24,4 +24,7 @@
   - specify an outDir to build folder name, and exclude the outDir in the build process in tsconfig.json
 
 - ncu, short for npm-check-update, which you have to install separately.
+
   - ncu -u to update all the dependencies in package.json
+
+- must have all the proper scripts set up in package.json before adding new ones in .yml file.
