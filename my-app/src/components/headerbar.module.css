@@ -45,6 +45,11 @@
   color: white;
 }
 
+.header a.wordle {
+  background-color: darkgreen;
+  color: white;
+}
+
 /* Float the link section to the right */
 .header-right {
   float: right;

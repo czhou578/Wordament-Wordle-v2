@@ -3,6 +3,7 @@ import express from "express";
 import { database } from "./database";
 import { scoreRouter } from "./routes/scores";
 import { userRouter } from "./routes/users";
+import { wordleRouter } from "./routes/wordle";
 const app = express();
 
 app.use(cors());
@@ -15,6 +16,7 @@ database.connect(function (err) {
 
 app.use("/users", userRouter);
 app.use("/scores", scoreRouter);
+app.use("/wordle", wordleRouter)
 
 app.listen(3001, () => {
   console.log("Server listening on Port 3001");

@@ -17,12 +17,14 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              presets: [['@babel/preset-typescript', { allowNamespaces: true }]]
-            }
+              presets: [
+                ["@babel/preset-typescript", { allowNamespaces: true }],
+              ],
+            },
           },
           {
-            loader: "ts-loader"
-          }
+            loader: "ts-loader",
+          },
         ],
       },
       {
@@ -49,5 +51,10 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
-  plugins: [new HtmlWebPackPlugin({ template: "./public/index.html" })],
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      manifest: "./public/manifest.json",
+    }),
+  ],
 };
