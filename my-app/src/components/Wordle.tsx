@@ -21,9 +21,14 @@ export default function Wordle() {
   }, []);
 
   useEffect(() => {
-    const handleType = (e: any) => {
-      if (e.key === "Enter") {
+    const handleType = (event: any) => {
+      if (event.key === "Enter") {
         if (currentGuess.length !== 5) return;
+
+        const newGuesses = [...guesses];
+        newGuesses[guesses.findIndex((val) => val === null)] = currentGuess;
+        setGuesses(newGuesses);
+        setCurrentGuess("");
 
         const isCorrect = solution === currentGuess;
         if (isCorrect) {
@@ -31,7 +36,7 @@ export default function Wordle() {
         }
       }
 
-      if (e.key === "Backspace") {
+      if (event.key === "Backspace") {
         setCurrentGuess(currentGuess.slice(0, -1));
         return;
       }
@@ -39,13 +44,12 @@ export default function Wordle() {
       if (currentGuess.length >= 5) {
         return;
       }
-
-      setCurrentGuess((oldGuess) => oldGuess + e.key);
+      setCurrentGuess((oldGuess) => oldGuess + event.key.toUpperCase());
     };
     window.addEventListener("keydown", handleType);
 
     return () => window.removeEventListener("keydown", handleType);
-  }, [currentGuess, solution]);
+  }, [currentGuess, solution, isGameOver]);
 
   return (
     <div className={styles.container}>
