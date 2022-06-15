@@ -28,3 +28,9 @@
   - ncu -u to update all the dependencies in package.json
 
 - must have all the proper scripts set up in package.json before adding new ones in .yml file.
+
+- webpack cannot resolve URI error (with favicon.ico and manifest.json)
+
+  - just make sure the file paths in dist folder and the regular index.html are the same for both files.
+
+- ?? can be used in jsx expression as a conditional, never knew that.
