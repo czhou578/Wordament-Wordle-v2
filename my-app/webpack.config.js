@@ -54,7 +54,6 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: "./public/index.html",
-      manifest: "./public/manifest.json",
     }),
   ],
 };

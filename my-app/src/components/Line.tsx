@@ -1,5 +1,4 @@
 import styles from "./line.module.css";
-
 const WORD_LENGTH = 5;
 interface Props {
   guess: string;
@@ -12,14 +11,14 @@ export default function Line(props: Props) {
 
   for (let i = 0; i < WORD_LENGTH; i++) {
     const element = props.guess[i];
-    let classNames = "tile";
+    let classNames = styles.tile;
     if (props.isFinal) {
       if (element === props.solution[i]) {
-        classNames += " correct";
+        classNames += " " + styles.correct;
       } else if (props.solution.includes(element)) {
-        classNames += " close";
+        classNames += " " + styles.close;
       } else {
-        classNames += " incorrect";
+        classNames += " " + styles.incorrect;
       }
     }
     tiles.push(
