@@ -31,7 +31,6 @@ export const UserDashboard: React.FC = () => {
 
   useEffect(() => {
     if (token) {
-      console.log(parseJwt(token));
       setUserName(parseJwt(token).name);
 
       const highScoreRequest = axios({
@@ -60,7 +59,6 @@ export const UserDashboard: React.FC = () => {
           let lowScore = JSON.parse(JSON.stringify(data[1].data))["MIN(Score)"];
           let avgScore = JSON.parse(JSON.stringify(data[2].data))["AVG(Score)"];
 
-          console.log(highScore);
           setHighestScore(highScore);
           setLowestScore(lowScore);
           setAverageScore(avgScore);

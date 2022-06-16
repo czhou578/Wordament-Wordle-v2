@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCorrectGuess } from "../api";
 import { RootState } from "../redux/store";
+import WordleModal from "../WordleModal";
 import { Headerbar } from "./Headerbar";
 import Line from "./Line";
 import styles from "./wordle.module.css";
@@ -12,6 +13,7 @@ export default function Wordle() {
   const [currentGuess, setCurrentGuess] = useState("");
   const [isGameOver, setIsGameOver] = useState(false);
   const [userName, setUserName] = useState<string>("");
+  const [foundWord, setFoundWord] = useState<boolean | null>(null);
   const token = useSelector((state: RootState) => state.info.token.token);
   const dispatch = useDispatch();
 
@@ -52,6 +54,10 @@ export default function Wordle() {
       if (event.key === "Enter") {
         if (currentGuess.length !== 5) return;
 
+        // if (guesses.findIndex((val) => val === null) === -1) {
+        //   setfou
+        // }
+
         const newGuesses = [...guesses];
         newGuesses[guesses.findIndex((val) => val === null)] = currentGuess;
         setGuesses(newGuesses);
@@ -61,6 +67,7 @@ export default function Wordle() {
         if (isCorrect) {
           console.log("correct guess");
           dispatch(setCorrectGuess(currentGuess));
+          setFoundWord(true);
           setIsGameOver(true);
         }
       }
@@ -91,21 +98,26 @@ export default function Wordle() {
       ) : (
         <Headerbar wordle={"Wordle"} />
       )}
-      <div className={styles.wrapper}>
-        <div className={styles.boardContainer}>
-          {guesses.map((guess, i) => {
-            const isCurrentGuess =
-              i === guesses.findIndex((val: any) => val == null);
-            return (
-              <Line
-                guess={isCurrentGuess ? currentGuess : guess ?? ""}
-                isFinal={!isCurrentGuess && guess != null}
-                solution={solution}
-              />
-            );
-          })}
+
+      {foundWord && isGameOver ? (
+        <WordleModal congrats />
+      ) : (
+        <div className={styles.wrapper}>
+          <div className={styles.boardContainer}>
+            {guesses.map((guess, i) => {
+              const isCurrentGuess =
+                i === guesses.findIndex((val: any) => val == null);
+              return (
+                <Line
+                  guess={isCurrentGuess ? currentGuess : guess ?? ""}
+                  isFinal={!isCurrentGuess && guess != null}
+                  solution={solution}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
