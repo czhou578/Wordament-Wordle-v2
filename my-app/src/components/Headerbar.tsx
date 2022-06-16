@@ -5,15 +5,24 @@ import { Link } from "react-router-dom";
 import { deleteToken } from "../api";
 import styles from "./headerbar.module.css";
 
-export const Headerbar: React.FC<{ userName?: string }> = ({ userName }) => {
+export const Headerbar: React.FC<{ userName?: string; wordle?: string }> = ({
+  userName,
+  wordle,
+}) => {
   const dispatch = useDispatch();
 
   return (
     <div className={styles.header}>
       <Link to={"/"}>
-        <a href="#default" className={styles.logo}>
-          Wordament
-        </a>
+        {wordle ? (
+          <a href="#default" className={styles.logo}>
+            Wordle
+          </a>
+        ) : (
+          <a href="#default" className={styles.logo}>
+            Wordament
+          </a>
+        )}
       </Link>
       {userName ? (
         <div className="header-right">

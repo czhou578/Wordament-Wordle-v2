@@ -44,7 +44,11 @@ export default function Wordle() {
       if (currentGuess.length >= 5) {
         return;
       }
-      setCurrentGuess((oldGuess) => oldGuess + event.key.toUpperCase());
+
+      const keyLetter = event.key.match(/^[A-Za-z]+$/) != null;
+      if (keyLetter) {
+        setCurrentGuess((oldGuess) => oldGuess + event.key.toUpperCase());
+      }
     };
     window.addEventListener("keydown", handleType);
 
@@ -53,19 +57,21 @@ export default function Wordle() {
 
   return (
     <div className={styles.container}>
-      <Headerbar />
-      <div className={styles.boardContainer}>
-        {guesses.map((guess, i) => {
-          const isCurrentGuess =
-            i === guesses.findIndex((val: any) => val == null);
-          return (
-            <Line
-              guess={isCurrentGuess ? currentGuess : guess ?? ""}
-              isFinal={!isCurrentGuess && guess != null}
-              solution={solution}
-            />
-          );
-        })}
+      <Headerbar wordle={"Wordle"} />
+      <div className={styles.wrapper}>
+        <div className={styles.boardContainer}>
+          {guesses.map((guess, i) => {
+            const isCurrentGuess =
+              i === guesses.findIndex((val: any) => val == null);
+            return (
+              <Line
+                guess={isCurrentGuess ? currentGuess : guess ?? ""}
+                isFinal={!isCurrentGuess && guess != null}
+                solution={solution}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

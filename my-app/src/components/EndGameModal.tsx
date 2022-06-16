@@ -14,7 +14,6 @@ export default function EndGameModal(props: Props) {
   const wordsList = useSelector(
     (state: RootState) => state.info.words.foundWords
   );
-  console.log(wordsList);
   const [signedInModal, setSignedInModal] = useState<boolean>(false);
 
   useEffect(() => {

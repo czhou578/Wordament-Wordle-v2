@@ -4,24 +4,25 @@
 }
 
 .tile {
-  width: 65px;
-  height: 65px;
-  border: 1px solid black;
+  width: 60px;
+  height: 60px;
+  border: 1px solid white;
   font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
+  color: white;
 }
 
 .correct {
-  background-color: lightgreen;
+  background-color: rgb(25, 142, 25);
 }
 
 .close {
-  background-color: yellow;
+  background-color: rgb(90, 90, 19);
 }
 
 .incorrect {
-  background-color: lightgray;
+  background-color: darkgray;
 }
