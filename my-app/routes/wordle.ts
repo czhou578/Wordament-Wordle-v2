@@ -8,4 +8,5 @@ router.get("/loadWord", (req: Request, res: Response) => {
   res.send({word: randomWord})
 })
 
+
 export const wordleRouter = router

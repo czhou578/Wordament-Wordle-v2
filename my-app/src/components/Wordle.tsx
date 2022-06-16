@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setCorrectGuess } from "../api";
+import { RootState } from "../redux/store";
 import { Headerbar } from "./Headerbar";
 import Line from "./Line";
 import styles from "./wordle.module.css";
@@ -8,6 +11,30 @@ export default function Wordle() {
   const [guesses, setGuesses] = useState(Array(6).fill(null));
   const [currentGuess, setCurrentGuess] = useState("");
   const [isGameOver, setIsGameOver] = useState(false);
+  const [userName, setUserName] = useState<string>("");
+  const token = useSelector((state: RootState) => state.info.token.token);
+  const dispatch = useDispatch();
+
+  function parseJwt(token: string) {
+    var base64Url = token.split(".")[1];
+    var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    var jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+
+    return JSON.parse(jsonPayload);
+  }
+
+  useEffect(() => {
+    if (token) {
+      setUserName(parseJwt(token).name);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchWord = async () => {
@@ -32,6 +59,8 @@ export default function Wordle() {
 
         const isCorrect = solution === currentGuess;
         if (isCorrect) {
+          console.log("correct guess");
+          dispatch(setCorrectGuess(currentGuess));
           setIsGameOver(true);
         }
       }
@@ -45,7 +74,7 @@ export default function Wordle() {
         return;
       }
 
-      const keyLetter = event.key.match(/^[A-Za-z]+$/) != null;
+      const keyLetter = event.key.match(/^[A-Za-z]{1}$/) != null;
       if (keyLetter) {
         setCurrentGuess((oldGuess) => oldGuess + event.key.toUpperCase());
       }
@@ -53,11 +82,15 @@ export default function Wordle() {
     window.addEventListener("keydown", handleType);
 
     return () => window.removeEventListener("keydown", handleType);
-  }, [currentGuess, solution, isGameOver]);
+  }, [currentGuess, solution, isGameOver, guesses]);
 
   return (
     <div className={styles.container}>
-      <Headerbar wordle={"Wordle"} />
+      {userName !== "" ? (
+        <Headerbar userName={userName} wordle={"Wordle"} />
+      ) : (
+        <Headerbar wordle={"Wordle"} />
+      )}
       <div className={styles.wrapper}>
         <div className={styles.boardContainer}>
           {guesses.map((guess, i) => {

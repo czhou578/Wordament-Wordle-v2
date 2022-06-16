@@ -10,6 +10,9 @@ export const UserDashboard: React.FC = () => {
   const [lowestScore, setLowestScore] = useState<number | null>(null);
   const [averageScore, setAverageScore] = useState<number | null>(null);
   const token = useSelector((state: RootState) => state.info.token.token);
+  const foundWordleWord = useSelector(
+    (state: RootState) => state.info.wordle.correctGuess
+  );
 
   function parseJwt(token: string) {
     var base64Url = token.split(".")[1];
@@ -83,6 +86,7 @@ export const UserDashboard: React.FC = () => {
               Here are the highlights of your playing history.
             </p>
           </div>
+
           <div style={{ display: "flex" }}>
             <div
               className="card"
@@ -128,6 +132,24 @@ export const UserDashboard: React.FC = () => {
                   Your average score was <b>{averageScore}</b>
                 </p>
               </div>
+            </div>
+          </div>
+          <div className="card-body">
+            <p className="card-text">Here are your Wordle Highlights.</p>
+          </div>
+          <div
+            className="card"
+            style={{
+              width: "18rem",
+              marginLeft: "300px",
+              marginBottom: "10px",
+            }}
+          >
+            <div className="card-body">
+              <h5 className="card-title">Recent Correct Guess</h5>
+              <p className="card-text">
+                <b>{foundWordleWord}</b>
+              </p>
             </div>
           </div>
           <div className="card-footer text-muted">Last played: 2 days ago</div>

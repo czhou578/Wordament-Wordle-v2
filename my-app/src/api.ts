@@ -44,15 +44,29 @@ const foundWordSlice = createSlice({
   },
 });
 
+const wordleSlice = createSlice({
+  name: "wordle_word",
+  initialState: {
+    correctGuess: null as string | null,
+  },
+  reducers: {
+    setCorrectGuess(state: any, action: PayloadAction<string>) {
+      state.correctGuess = action.payload
+    }
+  }
+})
+
 export const { setToken, deleteToken } = tokenSlice.actions;
 export const { setGameScore } = scoreSlice.actions;
 export const { setFoundWords } = foundWordSlice.actions;
+export const { setCorrectGuess } = wordleSlice.actions;
 
 // eslint-disable-next-line import/no-anonymous-default-export
 const reducers = combineReducers({
   token: tokenSlice.reducer,
   score: scoreSlice.reducer,
   words: foundWordSlice.reducer,
+  wordle: wordleSlice.reducer
 });
 
 export default reducers;

@@ -2,10 +2,9 @@
   display: flex;
   gap: 5px;
   flex-direction: column;
-  margin-left: 35%;
-  margin-top: -5px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  margin-left: 40%;
+  margin-top: 10%;
+  height: 95vh;
 }
 
 .wrapper {
