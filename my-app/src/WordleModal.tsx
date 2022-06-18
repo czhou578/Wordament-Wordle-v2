@@ -1,6 +1,9 @@
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { setToken } from "./api";
 import { RootState } from "./redux/store";
 
 interface Props {
@@ -15,6 +18,30 @@ export default function WordleModal(props: Props) {
   );
   const token = useSelector((state: RootState) => state.info.token.token);
   const [signedInModal, setSignedInModal] = useState<boolean>(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const userEntry = localStorage.getItem("user");
+    if (userEntry) {
+      const loggedInLocalStorageObj = JSON.parse(userEntry);
+      const loginRequestObj = {
+        userName: loggedInLocalStorageObj.Username,
+        password: loggedInLocalStorageObj.Password,
+      };
+
+      if (loginRequestObj.password && loginRequestObj.userName) {
+        axios({
+          method: "post",
+          url: "http://localhost:3001/users/loggedin",
+          data: {
+            loginRequestObj,
+          },
+        }).then(function (data) {
+          dispatch(setToken(data.data.accessToken));
+        });
+      }
+    }
+  }, []);
 
   useEffect(() => {
     if (token) {
@@ -39,27 +66,39 @@ export default function WordleModal(props: Props) {
         ) : null}
 
         {signedInModal ? (
-          <div style={{ display: "flex", width: "200px" }}>
-            <button
-              type="button"
-              className="btn btn-primary btn-sm"
-              style={{ width: "100%", marginLeft: "40%" }}
+          <div style={{ display: "flex", marginBottom: "10px" }}>
+            <Link to="/wordle" style={{ marginLeft: "80px", width: "30%" }}>
+              <button
+                type="button"
+                className="btn btn-primary btn-sm"
+                style={{ width: "100%" }}
+                onClick={() => window.location.reload()}
+              >
+                Play Again
+              </button>
+            </Link>
+            <Link
+              to={"/dashboard"}
+              style={{ marginLeft: "100px", width: "30%" }}
             >
-              Play Again
-            </button>
-            <button
-              type="button"
-              className="btn btn-secondary btn-sm"
-              style={{ width: "100%", marginLeft: "50%" }}
-            >
-              User Dashboard
-            </button>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                style={{
+                  width: "100%",
+                  marginRight: "60px",
+                }}
+              >
+                User Dashboard
+              </button>
+            </Link>
           </div>
         ) : (
           <button
             type="button"
             className="btn btn-primary btn-sm"
             style={{ width: "20%", marginLeft: "40%", marginBottom: "10px" }}
+            onClick={() => window.location.reload()}
           >
             Play Again
           </button>

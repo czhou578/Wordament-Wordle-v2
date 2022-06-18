@@ -89,7 +89,7 @@ export default function Wordle() {
     window.addEventListener("keydown", handleType);
 
     return () => window.removeEventListener("keydown", handleType);
-  }, [currentGuess, solution, isGameOver, guesses]);
+  }, [currentGuess, solution, isGameOver, guesses, dispatch]);
 
   return (
     <div className={styles.container}>
