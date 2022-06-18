@@ -5,6 +5,21 @@ export interface Credentials {
   Password: string;
 }
 
+export function setCredentialsAndName(entry: Credentials) {
+  console.info("set localstorage");
+  localStorage.setItem("user", JSON.stringify(entry));
+};
+
+export function getCredentialsEntry(): Credentials | null {
+  const entry = localStorage.getItem("user")
+
+  if (entry === null) return null
+
+  const object = JSON.parse(entry)
+
+  return object as Credentials
+}
+
 const tokenSlice = createSlice({
   name: "token",
   initialState: {

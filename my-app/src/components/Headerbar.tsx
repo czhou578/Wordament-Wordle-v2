@@ -2,7 +2,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteToken } from "../api";
+import { deleteToken, getCredentialsEntry } from "../api";
 import styles from "./headerbar.module.css";
 
 export const Headerbar: React.FC<{ userName?: string; wordle?: string }> = ({
@@ -10,6 +10,7 @@ export const Headerbar: React.FC<{ userName?: string; wordle?: string }> = ({
   wordle,
 }) => {
   const dispatch = useDispatch();
+  const storeEntry = getCredentialsEntry();
 
   return (
     <div className={styles.header}>
@@ -24,7 +25,7 @@ export const Headerbar: React.FC<{ userName?: string; wordle?: string }> = ({
           </a>
         )}
       </Link>
-      {userName ? (
+      {storeEntry ? (
         <div className="header-right">
           <Link to={"/wordle"}>
             <a className={styles.wordle}>Wordle</a>
@@ -33,12 +34,15 @@ export const Headerbar: React.FC<{ userName?: string; wordle?: string }> = ({
             <a className={styles.signup}>Signup</a>
           </Link>
           <Link to={"/dashboard"}>
-            <a className={styles.active}>Hi {userName}!</a>
+            <a className={styles.active}>Hi {storeEntry.Username}!</a>
           </Link>
           <Link to={"/"}>
             <a
               className={styles.logout}
-              onClick={() => dispatch(deleteToken(""))}
+              onClick={() => {
+                dispatch(deleteToken(""));
+                localStorage.removeItem("user");
+              }}
             >
               Logout
             </a>

@@ -34,3 +34,5 @@
   - just make sure the file paths in dist folder and the regular index.html are the same for both files.
 
 - ?? can be used in jsx expression as a conditional, never knew that.
+
+- the req body data obj has to have the same name as its defined in users.ts

@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setToken } from "../api";
+import { setCredentialsAndName, setToken } from "../api";
 import { Headerbar } from "./Headerbar";
 
 export const Login: React.FC = () => {
@@ -26,6 +26,7 @@ export const Login: React.FC = () => {
       },
     }).then(function (data) {
       dispatch(setToken(data.data.accessToken));
+      setCredentialsAndName({ Username: userName, Password: password });
       navigate("/dashboard");
       console.log("success");
     });

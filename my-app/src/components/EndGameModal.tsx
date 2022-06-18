@@ -20,7 +20,7 @@ export default function EndGameModal(props: Props) {
     if (token) {
       setSignedInModal(true);
     }
-  }, []);
+  }, [token]);
 
   return (
     <div className={styles.container}>
