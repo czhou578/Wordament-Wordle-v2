@@ -16,7 +16,6 @@ export const Signup: React.FC = () => {
   const dispatch = useDispatch();
 
   const setCredentials = (entry: Credentials) => {
-    console.log("set credentials");
     localStorage.setItem("user", JSON.stringify(entry));
   };
 
@@ -33,7 +32,6 @@ export const Signup: React.FC = () => {
       dispatch(setToken(data.data.accessToken));
       setCredentials({ Username: userName, Password: password });
       navigate("/dashboard");
-      console.log("success");
     });
   };
 

@@ -14,21 +14,17 @@ export default function Clock(props: Props) {
   // let time: number = starting * 3; //seconds
 
   useEffect(() => {
-    console.log("time: " + time);
-    console.log("timesup: " + props.timesUp);
     setInterval(() => {
       if (time === -1) {
         props.setTimesUp(true);
         return () => clearInterval();
       }
-      console.log("continue");
       update();
     }, 1000);
   }, [time]);
 
   function update() {
     //update the clock
-    console.log("clock");
     const minutes: number = Math.floor(time / 60);
     let seconds: string | number = time % 60;
 

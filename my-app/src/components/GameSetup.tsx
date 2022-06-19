@@ -50,7 +50,6 @@ export const GameSetup: React.FC = () => {
       } else {
         return;
       }
-      console.log(userName);
       let payload = {
         score: score,
         userName: userName.name,
@@ -63,8 +62,6 @@ export const GameSetup: React.FC = () => {
         data: {
           payload,
         },
-      }).then(() => {
-        console.log("success");
       });
     } else {
       isMounted.current = true;

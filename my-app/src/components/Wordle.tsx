@@ -42,7 +42,6 @@ export default function Wordle() {
     const fetchWord = async () => {
       const result = await fetch("http://localhost:3001/wordle/loadWord");
       const response = await result.json();
-      console.log(response);
       setSolution(response.word);
     };
 
@@ -56,7 +55,6 @@ export default function Wordle() {
 
         const newGuesses = [...guesses];
         newGuesses[guesses.findIndex((val) => val === null)] = currentGuess;
-        console.log(newGuesses[5]);
 
         if (newGuesses[5] && newGuesses[5] !== solution) {
           setFoundWord(false);
@@ -69,7 +67,6 @@ export default function Wordle() {
 
         const isCorrect = solution === currentGuess;
         if (isCorrect) {
-          console.log("correct guess");
           dispatch(setCorrectGuess(currentGuess));
           setFoundWord(true);
           setIsGameOver(true);
