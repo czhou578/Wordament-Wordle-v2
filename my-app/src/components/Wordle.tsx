@@ -54,12 +54,16 @@ export default function Wordle() {
       if (event.key === "Enter") {
         if (currentGuess.length !== 5) return;
 
-        // if (guesses.findIndex((val) => val === null) === -1) {
-        //   setfou
-        // }
-
         const newGuesses = [...guesses];
         newGuesses[guesses.findIndex((val) => val === null)] = currentGuess;
+        console.log(newGuesses[5]);
+
+        if (newGuesses[5] && newGuesses[5] !== solution) {
+          setFoundWord(false);
+          setIsGameOver(true);
+          return;
+        }
+
         setGuesses(newGuesses);
         setCurrentGuess("");
 
@@ -101,6 +105,8 @@ export default function Wordle() {
 
       {foundWord && isGameOver ? (
         <WordleModal congrats />
+      ) : !foundWord && isGameOver ? (
+        <WordleModal sorry solution={solution} />
       ) : (
         <div className={styles.wrapper}>
           <div className={styles.boardContainer}>

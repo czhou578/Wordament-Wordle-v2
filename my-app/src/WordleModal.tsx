@@ -9,7 +9,7 @@ import { RootState } from "./redux/store";
 interface Props {
   congrats?: boolean;
   sorry?: boolean;
-  userDashboard?: boolean;
+  solution?: string;
 }
 
 export default function WordleModal(props: Props) {
@@ -61,6 +61,13 @@ export default function WordleModal(props: Props) {
             <h5 className="card-title">You Win!</h5>
             <p className="card-text" style={{ marginTop: "20px" }}>
               The correct word was {foundWordleWord}{" "}
+            </p>
+          </div>
+        ) : props.sorry ? (
+          <div className="card-body">
+            <h5 className="card-title">Round Failed!</h5>
+            <p className="card-text" style={{ marginTop: "20px" }}>
+              The correct word was {props.solution}{" "}
             </p>
           </div>
         ) : null}
