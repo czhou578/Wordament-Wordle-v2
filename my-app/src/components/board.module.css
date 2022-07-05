@@ -4,8 +4,8 @@
   column-gap: 20px;
   row-gap: 20px;
   position: absolute;
-  top: 250px;
-  right: 700px;
+  top: 215px;
+  right: 500px;
   height: 600px;
   width: 530px;
   background-color: antiquewhite;
@@ -27,13 +27,13 @@
 }
 
 .logContainer {
-  position: absolute;
-  right: 65%;
+  background-color: lightcyan;
   bottom: 10%;
   height: 600px;
-  width: 350px;
-  background-color: lightcyan;
   overflow-y: scroll;
+  position: absolute;
+  right: 65%;
+  width: 350px;
 }
 
 .wordList {
