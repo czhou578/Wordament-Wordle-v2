@@ -39,7 +39,7 @@ export const GameSetup: React.FC = () => {
     if (token) {
       setUserName(parseJwt(token).name);
     }
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     if (isMounted.current) {
@@ -66,7 +66,7 @@ export const GameSetup: React.FC = () => {
     } else {
       isMounted.current = true;
     }
-  }, [timesUp]);
+  }, []);
 
   return (
     <div className={styles.appContainer}>

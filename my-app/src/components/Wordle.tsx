@@ -8,10 +8,10 @@ import Line from "./Line";
 import styles from "./wordle.module.css";
 
 export default function Wordle() {
-  const [solution, setSolution] = useState("");
+  const [solution, setSolution] = useState<string>("");
   const [guesses, setGuesses] = useState(Array(6).fill(null));
-  const [currentGuess, setCurrentGuess] = useState("");
-  const [isGameOver, setIsGameOver] = useState(false);
+  const [currentGuess, setCurrentGuess] = useState<string>("");
+  const [isGameOver, setIsGameOver] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
   const [foundWord, setFoundWord] = useState<boolean | null>(null);
   const token = useSelector((state: RootState) => state.info.token.token);
@@ -36,7 +36,7 @@ export default function Wordle() {
     if (token) {
       setUserName(parseJwt(token).name);
     }
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     const fetchWord = async () => {

@@ -6,7 +6,6 @@ import { deleteToken, getCredentialsEntry } from "../api";
 import styles from "./headerbar.module.css";
 
 export const Headerbar: React.FC<{ userName?: string; wordle?: string }> = ({
-  userName,
   wordle,
 }) => {
   const dispatch = useDispatch();

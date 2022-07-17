@@ -15,7 +15,7 @@ export default function Board(props: Props) {
   const boardRef = useRef() as MutableRefObject<HTMLInputElement>;
   const wordSquareRef = useRef() as MutableRefObject<HTMLInputElement>;
   const containerRef = useRef() as MutableRefObject<HTMLInputElement>;
-  const isMounted = useRef(false);
+  const isMounted = useRef<boolean>(false);
   const [correctWordsList, setCorrectWordsList] = useState<string[]>([]);
   const dispatch = useDispatch();
 
