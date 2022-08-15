@@ -48,9 +48,7 @@ export const Login: React.FC = () => {
             className="form-control"
             id="formGroupExampleInput"
             placeholder="Enter Username"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setUserName(e.target.value)
-            }
+            onChange={(e) => setUserName(e.target.value)}
           />
         </div>
         <div
@@ -65,9 +63,7 @@ export const Login: React.FC = () => {
             className="form-control"
             id="formGroupExampleInput2"
             placeholder="Enter Password"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setPassword(e.target.value)
-            }
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <button

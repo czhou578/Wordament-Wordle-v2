@@ -1,6 +1,6 @@
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
@@ -51,9 +51,7 @@ export const Signup: React.FC = () => {
             className="form-control"
             id="formGroupExampleInput"
             placeholder="First Name"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setFirstName(e.target.value)
-            }
+            onChange={(e) => setFirstName(e.target.value)}
             name="firstName"
           />
         </div>
@@ -69,9 +67,7 @@ export const Signup: React.FC = () => {
             className="form-control"
             id="formGroupExampleInput"
             placeholder="Last Name"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setLastName(e.target.value)
-            }
+            onChange={(e) => setLastName(e.target.value)}
             name="lastName"
           />
         </div>
@@ -87,9 +83,7 @@ export const Signup: React.FC = () => {
             className="form-control"
             id="formGroupExampleInput"
             placeholder="New Username"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setUserName(e.target.value)
-            }
+            onChange={(e) => setUserName(e.target.value)}
             name="userName"
           />
         </div>
@@ -105,9 +99,7 @@ export const Signup: React.FC = () => {
             className="form-control"
             id="formGroupExampleInput2"
             placeholder="New Password"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setPassword(e.target.value)
-            }
+            onChange={(e) => setPassword(e.target.value)}
             name="password"
           />
         </div>

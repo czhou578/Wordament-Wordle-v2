@@ -27,8 +27,6 @@ export default function Board(props: Props) {
 
   useEffect(() => {
     if (isMounted.current) {
-      console.log("before dispatched");
-      console.log("dispatched");
     } else {
       isMounted.current = true;
     }
