@@ -7,8 +7,8 @@ import { setCredentialsAndName, setToken } from "../api";
 import { Headerbar } from "./Headerbar";
 
 export const Login: React.FC = () => {
-  const [userName, setUserName] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

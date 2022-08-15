@@ -31,7 +31,7 @@
   },
 "scripts": {
     "start": "webpack serve --config webpack.config.js",
-    "build": "react-scripts build",
+    "build": "webpack --mode development",
     "test": "jest",
     "typescript": "tsc -p tsconfig.json",
     "serverStart": "nodemon server.ts",

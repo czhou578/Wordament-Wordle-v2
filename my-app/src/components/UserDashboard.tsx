@@ -35,7 +35,7 @@ export const UserDashboard: React.FC = () => {
         dispatch(setToken(data.data.accessToken));
       });
     }
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (token) {

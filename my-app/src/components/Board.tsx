@@ -15,7 +15,7 @@ export default function Board(props: Props) {
   const boardRef = useRef() as MutableRefObject<HTMLInputElement>;
   const wordSquareRef = useRef() as MutableRefObject<HTMLInputElement>;
   const containerRef = useRef() as MutableRefObject<HTMLInputElement>;
-  const isMounted = useRef<boolean>(false);
+  const isMounted = useRef(false);
   const [correctWordsList, setCorrectWordsList] = useState<string[]>([]);
   const dispatch = useDispatch();
 
@@ -27,6 +27,8 @@ export default function Board(props: Props) {
 
   useEffect(() => {
     if (isMounted.current) {
+      console.log("before dispatched");
+      console.log("dispatched");
     } else {
       isMounted.current = true;
     }
