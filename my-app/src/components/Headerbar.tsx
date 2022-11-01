@@ -27,6 +27,9 @@ export const Headerbar: React.FC<{ userName?: string; wordle?: string }> = ({
       </Link>
       {storeEntry ? (
         <div className="header-right">
+          <Link to={"/color-game"}>
+            <a className={styles.color}>Color Game</a>
+          </Link>
           <Link to={"/wordle"}>
             <a className={styles.wordle}>Wordle</a>
           </Link>

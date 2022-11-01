@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { ColorGame } from "./components/ColorGame";
 import { GameSetup } from "./components/GameSetup";
 import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
@@ -12,6 +13,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={<UserDashboard />} />
       <Route path="/wordle" element={<Wordle />} />
+      <Route path="/color-game" element={<ColorGame />} />
     </Routes>
   );
 }
