@@ -16,7 +16,7 @@ database.connect(function (err) {
 
 app.use("/users", userRouter);
 app.use("/scores", scoreRouter);
-app.use("/wordle", wordleRouter)
+app.use("/wordle", wordleRouter);
 
 app.listen(3001, () => {
   console.log("Server listening on Port 3001");

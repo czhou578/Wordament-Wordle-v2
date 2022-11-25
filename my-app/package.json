@@ -30,7 +30,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "webpack serve --config webpack.config.js",
+    "start": "react-scripts start",
     "build": "webpack --mode development",
     "test": "jest",
     "typescript": "tsc -p tsconfig.json",

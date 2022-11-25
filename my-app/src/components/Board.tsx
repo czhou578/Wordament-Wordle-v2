@@ -19,16 +19,14 @@ export default function Board(props: Props) {
   const [correctWordsList, setCorrectWordsList] = useState<string[]>([]);
   const dispatch = useDispatch();
 
-  let squaresUsed: number = 0;
+  let squaresUsed = 0;
   let mousedown: boolean;
-  let selectedLetters: HTMLElement[] = new Array(16);
+  let selectedLetters = new Array(16);
   let vowelString: string = "aeiou".toUpperCase();
   let consonantString: string = "bcdfghjklmnpqrstvwxyz".toUpperCase();
 
   useEffect(() => {
     if (isMounted.current) {
-      console.log("before dispatched");
-      console.log("dispatched");
     } else {
       isMounted.current = true;
     }
@@ -40,8 +38,8 @@ export default function Board(props: Props) {
   }, []);
 
   useEffect(() => {
-    containerRef.current!.onmouseleave = leftBoard;
-    boardRef.current!.onmouseup = touchedBoard;
+    containerRef.current.onmouseleave = leftBoard;
+    boardRef.current.onmouseup = touchedBoard;
     mouseControlSquares();
   }, []);
 
@@ -49,6 +47,7 @@ export default function Board(props: Props) {
     for (let i = 0; i < squaresUsed; i++) {
       selectedLetters[i].style.backgroundColor = "lightgreen";
     }
+
     squaresUsed = 0;
     mousedown = false;
   }
@@ -95,6 +94,7 @@ export default function Board(props: Props) {
         square[i].style.backgroundColor = "orange";
         selectedLetters[0] = square[i];
         squaresUsed++;
+        console.log("squares used: " + squaresUsed);
       });
 
       square[i].addEventListener("mouseover", function (e) {

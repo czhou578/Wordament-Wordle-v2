@@ -8,16 +8,16 @@ export interface Credentials {
 export function setCredentialsAndName(entry: Credentials) {
   console.info("set localstorage");
   localStorage.setItem("user", JSON.stringify(entry));
-};
+}
 
 export function getCredentialsEntry(): Credentials | null {
-  const entry = localStorage.getItem("user")
+  const entry = localStorage.getItem("user");
 
-  if (entry === null) return null
+  if (entry === null) return null;
 
-  const object = JSON.parse(entry)
+  const object = JSON.parse(entry);
 
-  return object as Credentials
+  return object as Credentials;
 }
 
 const tokenSlice = createSlice({
@@ -66,10 +66,10 @@ const wordleSlice = createSlice({
   },
   reducers: {
     setCorrectGuess(state: any, action: PayloadAction<string>) {
-      state.correctGuess = action.payload
-    }
-  }
-})
+      state.correctGuess = action.payload;
+    },
+  },
+});
 
 export const { setToken, deleteToken } = tokenSlice.actions;
 export const { setGameScore } = scoreSlice.actions;
@@ -81,7 +81,7 @@ const reducers = combineReducers({
   token: tokenSlice.reducer,
   score: scoreSlice.reducer,
   words: foundWordSlice.reducer,
-  wordle: wordleSlice.reducer
+  wordle: wordleSlice.reducer,
 });
 
 export default reducers;
