@@ -3,9 +3,6 @@
   grid-template-columns: auto auto auto auto;
   column-gap: 20px;
   row-gap: 20px;
-  position: absolute;
-  top: 250px;
-  right: 700px;
   height: 600px;
   width: 530px;
   background-color: antiquewhite;
@@ -22,14 +19,15 @@
 }
 
 .container {
-  margin-left: 30% !important;
-  margin-top: 30% !important;
+  padding-top: 150px;
+  margin: 0 auto;
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .logContainer {
-  position: absolute;
-  right: 65%;
-  bottom: 10%;
   height: 600px;
   width: 350px;
   background-color: lightcyan;
