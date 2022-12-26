@@ -19,10 +19,14 @@ export const Login: React.FC = () => {
     };
 
     axios({
+      // method: "put",
       method: "post",
       url: "http://localhost:3001/users/loggedin",
       data: {
         loginRequestObj,
+      },
+      headers: {
+        "Content-Type": "application/json",
       },
     }).then(function (data) {
       dispatch(setToken(data.data.accessToken));

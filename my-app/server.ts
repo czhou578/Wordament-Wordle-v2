@@ -6,7 +6,9 @@ import { userRouter } from "./routes/users";
 import { wordleRouter } from "./routes/wordle";
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  methods: ['GET', 'POST']
+}));
 app.use(express.json());
 
 database.connect(function (err) {
