@@ -1,0 +1,7 @@
+version: '20.10.21'
+
+services:
+  mysql:
+    image: mysql:5.7.24
+    env_file:
+      - ./.env
