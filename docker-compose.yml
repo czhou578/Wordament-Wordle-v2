@@ -5,3 +5,6 @@ services:
     image: mysql:5.7.24
     env_file:
       - ./.env
+  
+  frontend:
+    

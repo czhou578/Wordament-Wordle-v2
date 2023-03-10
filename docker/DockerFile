@@ -1,9 +1,0 @@
-FROM node:latest
-
-COPY ../my-app .
-
-RUN npm install
-
-CMD npm start 
-
-
