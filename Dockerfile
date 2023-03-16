@@ -5,7 +5,9 @@ WORKDIR /app
 COPY ./my-app/package.json .
 
 RUN npm install
-COPY . /usr/app/
+
+COPY ../my-app/public/index.html ./
+COPY . ./
 
 EXPOSE 3000
 
